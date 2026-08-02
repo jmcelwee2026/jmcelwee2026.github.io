@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — Joshua McElwee</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+:root{
+  --ink:#14161A; --ink-soft:#3E444D; --ink-faint:#737983;
+  --gold:#C9A20E; --gold-deep:#8E7108; --gold-edge:#E2D6A9;
+  --paper:#F6F3EB;
+  --serif:"Iowan Old Style","Charter","Palatino Linotype","Palatino","Hoefler Text",Georgia,serif;
+  --sans:"Avenir Next","Optima","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:var(--serif); color:var(--ink); background:var(--paper);
+  display:flex; min-height:100vh;
+}
+.rail{width:14px; min-height:100vh; background:var(--ink); flex:none}
+.seam{width:1.5px; background:var(--gold); flex:none}
+main{flex:1; display:flex; flex-direction:column; justify-content:center; padding:11vh 9vw; max-width:860px}
+h1{font-size:clamp(1.9rem,4vw,2.6rem); font-weight:700; letter-spacing:.005em}
+.cred{
+  font-family:var(--sans); font-size:.72rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-faint); margin-top:.9rem;
+}
+.rule{border:none; border-top:3px double var(--gold); margin:2.2rem 0; width:6.5rem}
+.home{font-family:var(--sans); font-size:.9rem}
+.home a{color:var(--gold-deep); text-decoration:none; border-bottom:1px solid var(--gold-edge)}
+.home a:hover{color:var(--ink); border-bottom-color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="rail" aria-hidden="true"></div>
+<div class="seam"></div>
+<main>
+  <h1>Page not found</h1>
+  <p class="cred">404</p>
+  <hr class="rule">
+  <p class="home"><a href="/">Return to joshuamcelwee.com</a></p>
+</main>
+</body>
+</html>

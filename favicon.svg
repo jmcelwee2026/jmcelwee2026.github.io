@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="McElwee mark">
+  <!-- Favicon build of the brand mark: ink field added for small-size
+       legibility on light and dark tabs; stroke set to the approved brand
+       gold used on the site. Geometry identical to mark.svg. -->
+  <rect width="200" height="200" fill="#14161A"/>
+  <g fill="none" stroke="#C9A20E" stroke-width="10.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="100" cy="100" r="87"/>
+    <path d="M 55 108
+             L 55 76
+             A 29 29 0 0 1 113 76
+             L 113 172"/>
+    <path d="M 113 128
+             C 129 118, 155 124, 155 140
+             C 155 156, 129 160, 113 152"/>
+    <line x1="34" y1="98" x2="88" y2="62"/>
+  </g>
+</svg>
