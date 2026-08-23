@@ -322,9 +322,9 @@ h1{
   </section>
 
   <section class="card-region" aria-label="Interactive business card">
-    <button class="business-card" id="business-card" type="button" data-side="front" aria-pressed="false" aria-label="Show the back of Joshua McElwee's business card">
+    <button class="business-card" id="business-card" type="button" data-side="back" aria-pressed="true" aria-label="Show the front of Joshua McElwee's business card">
       <span class="card-inner">
-        <span class="card-face card-front" id="card-front">
+        <span class="card-face card-front" id="card-front" aria-hidden="true">
           <span class="front-rail" aria-hidden="true"><img src="/favicon.svg" alt=""></span>
           <span class="front-seam" aria-hidden="true"></span>
           <span class="front-field">
@@ -340,7 +340,7 @@ h1{
             </span>
           </span>
         </span>
-        <span class="card-face card-back" id="card-back" aria-hidden="true">
+        <span class="card-face card-back" id="card-back" aria-hidden="false">
           <span class="sr-only">Back of business card with the McElwee mark.</span>
           <img src="/favicon.svg" alt="" aria-hidden="true">
         </span>
@@ -348,10 +348,10 @@ h1{
     </button>
 
     <div class="card-guidance">
-      <p class="tap-copy" id="card-status" aria-live="polite">Front shown · tap the card to turn it over</p>
+      <p class="tap-copy" id="card-status" aria-live="polite">Back shown · tap the card to turn it over</p>
       <div class="side-indicator" role="group" aria-label="Choose card side">
-        <button type="button" data-show-side="front" aria-pressed="true">Front</button>
-        <button type="button" data-show-side="back" aria-pressed="false">Back</button>
+        <button type="button" data-show-side="front" aria-pressed="false">Front</button>
+        <button type="button" data-show-side="back" aria-pressed="true">Back</button>
       </div>
     </div>
   </section>
@@ -398,7 +398,7 @@ h1{
   controls.forEach((control) => {
     control.addEventListener("click", () => showSide(control.dataset.showSide));
   });
-  showSide("front", false);
+  showSide("back", false);
 })();
 </script>
 </body>
