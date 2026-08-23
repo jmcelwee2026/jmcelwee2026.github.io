@@ -398,7 +398,10 @@ h1{
   controls.forEach((control) => {
     control.addEventListener("click", () => showSide(control.dataset.showSide));
   });
-  showSide("back", false);
+  const requestedSide = new URLSearchParams(window.location.search).get("view");
+  const openingSide = requestedSide === "front" ? "front" : "back";
+  showSide(openingSide, false);
+  window.addEventListener("pageshow", () => showSide(openingSide, false));
 })();
 </script>
 </body>
