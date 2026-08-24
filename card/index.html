@@ -203,14 +203,7 @@ h1{
   background:var(--ink);
   transform:rotateY(180deg);
 }
-.card-back::before{
-  position:absolute;
-  inset:6%;
-  border:1px solid rgb(201 162 14 / 28%);
-  border-radius:calc(clamp(.58rem,2cqw,.95rem) * .58);
-  content:"";
-}
-.card-back img{width:clamp(5.8rem,26cqw,12.4rem);height:auto}
+.card-back img{width:clamp(4.5rem,20.6cqw,9.8rem);height:auto}
 .card-guidance{
   display:flex;
   align-items:center;
@@ -325,7 +318,7 @@ h1{
     <button class="business-card" id="business-card" type="button" data-side="back" aria-pressed="true" aria-label="Show the front of Joshua McElwee's business card">
       <span class="card-inner">
         <span class="card-face card-front" id="card-front" aria-hidden="true">
-          <span class="front-rail" aria-hidden="true"><img src="/favicon.svg" alt=""></span>
+          <span class="front-rail" aria-hidden="true"><img src="/foil-mark.svg" alt=""></span>
           <span class="front-seam" aria-hidden="true"></span>
           <span class="front-field">
             <span>
@@ -341,8 +334,8 @@ h1{
           </span>
         </span>
         <span class="card-face card-back" id="card-back" aria-hidden="false">
-          <span class="sr-only">Back of business card with the McElwee mark.</span>
-          <img src="/favicon.svg" alt="" aria-hidden="true">
+          <span class="sr-only">Back of business card with the McElwee lens-ring mark.</span>
+          <img src="/foil-mark.svg" alt="" aria-hidden="true">
         </span>
       </span>
     </button>
