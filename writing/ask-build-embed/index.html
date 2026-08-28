@@ -104,13 +104,44 @@ footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted 
 <body>
 <div class="rail">
   <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="McElwee mark">
+    <style>
+      .mark-halo circle{animation:markBreathe 6.4s ease-in-out infinite; animation-delay:var(--d)}
+      .mark-glint{transform-box:view-box; transform-origin:100px 100px; animation:markSweep 8s linear infinite}
+      @keyframes markBreathe{0%,100%{opacity:var(--o)} 50%{opacity:var(--op)}}
+      @keyframes markSweep{
+        0%{transform:rotate(0deg); opacity:0}
+        12%{opacity:1}
+        55%{opacity:1}
+        72%{opacity:0}
+        100%{transform:rotate(360deg); opacity:0}
+      }
+      @media (prefers-reduced-motion: reduce){
+        .mark-halo circle{animation:none}
+        .mark-glint{animation:none; opacity:0}
+      }
+    </style>
+    <defs>
+      <linearGradient id="markGlintGrad" gradientUnits="userSpaceOnUse" x1="140" y1="100" x2="105" y2="140">
+        <stop offset="0" stop-color="#F3D65C" stop-opacity="0"/>
+        <stop offset="0.5" stop-color="#F7E27E"/>
+        <stop offset="1" stop-color="#F3D65C" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="markGlow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="3.5"/>
+      </filter>
+    </defs>
     <circle cx="100" cy="100" r="37" fill="#000000"/>
+    <circle cx="100" cy="100" r="40" fill="none" stroke="#C9A20E" stroke-width="7" opacity="0.4" filter="url(#markGlow)"/>
     <circle cx="100" cy="100" r="40" fill="none" stroke="#C9A20E" stroke-width="7"/>
-    <g fill="none" stroke="#C9A20E">
-      <circle cx="100" cy="100" r="46.5" stroke-width="1.2" opacity="0.5"/>
-      <circle cx="100" cy="100" r="52" stroke-width="2.6" opacity="0.5"/>
-      <circle cx="100" cy="100" r="67" stroke-width="1.9" opacity="0.28"/>
-      <circle cx="100" cy="100" r="85" stroke-width="1.4" opacity="0.14"/>
+    <g class="mark-halo" fill="none" stroke="#C9A20E">
+      <circle cx="100" cy="100" r="46.5" stroke-width="1.2" opacity="0.5" style="--o:.5;--op:.85;--d:0s"/>
+      <circle cx="100" cy="100" r="52" stroke-width="2.6" opacity="0.5" style="--o:.5;--op:.8;--d:1.1s"/>
+      <circle cx="100" cy="100" r="67" stroke-width="1.9" opacity="0.28" style="--o:.28;--op:.55;--d:2.2s"/>
+      <circle cx="100" cy="100" r="85" stroke-width="1.4" opacity="0.14" style="--o:.14;--op:.34;--d:3.3s"/>
+    </g>
+    <g class="mark-glint">
+      <circle cx="100" cy="100" r="40" fill="none" stroke="url(#markGlintGrad)" stroke-width="9" stroke-linecap="round" stroke-dasharray="58 193.4" filter="url(#markGlow)" opacity="0.85"/>
+      <circle cx="100" cy="100" r="40" fill="none" stroke="url(#markGlintGrad)" stroke-width="7" stroke-linecap="round" stroke-dasharray="58 193.4"/>
     </g>
   </svg>
   <nav aria-label="Primary">
