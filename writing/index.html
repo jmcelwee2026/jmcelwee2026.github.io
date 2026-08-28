@@ -138,6 +138,14 @@ footer .disclaimer{
 footer .signoff{font-family:var(--sans); font-size:.72rem; letter-spacing:.06em; color:var(--ink-faint); margin-top:1rem;}
 footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted var(--gold-edge)}
 
+
+.tabs{display:flex; gap:2.4rem; margin-top:2.2rem; border-bottom:1px solid var(--gold-edge); font-family:var(--sans); font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; max-width:38rem;}
+.tabs button{background:none; border:none; cursor:pointer; color:var(--ink-faint); padding:0 0 .7rem; font-family:inherit; font-size:inherit; letter-spacing:inherit; text-transform:inherit;}
+.tabs button:hover{color:var(--ink-soft)}
+.tabs button.active{color:var(--gold-deep); border-bottom:2px solid var(--gold); margin-bottom:-1px;}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
 @media (max-width:760px){
   body{flex-direction:column}
   .rail{
@@ -209,28 +217,51 @@ footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted 
 <div class="seam" aria-hidden="true"></div>
 <main class="long">
   <h1 class="small">Writing</h1>
-  <p class="cred">Discussion series · Papers</p>
+  <p class="cred">Papers · Discussion series</p>
   <hr class="rule">
 
-  <div class="prose">
+  <div class="tabs" role="tablist">
+    <button class="active" id="tab-btn-papers" onclick="showTab('papers')">Papers</button>
+    <button id="tab-btn-series" onclick="showTab('series')">Discussion Series</button>
+  </div>
 
-    <h2>Papers</h2>
-    <div class="cards" style="margin-bottom:1.6rem">
+  <div class="tab-panel active" id="tab-papers">
+    <div class="cards">
       <a class="card" href="/writing/sanctity-of-the-record/">
-        <div class="card-eyebrow">Seminar Paper · AI and the Practice of Law · Fall 2025</div>
+        <div class="card-eyebrow">Seminar Paper &middot; AI and the Practice of Law &middot; Fall 2025</div>
         <div class="card-title">The King&rsquo;s Good Servant, <i>and</i> God&rsquo;s First</div>
         <div class="card-hook">AI, the sanctity of the record, and the lawyer&rsquo;s duty of truth &mdash; deepfake evidence, hallucinated citations, and the moral duty of verification, read through St. Thomas More&rsquo;s final words.</div>
-        <div class="card-tags">Legal Ethics · Evidence · Jurisprudence</div>
+        <div class="card-tags">Legal Ethics &middot; Evidence &middot; Jurisprudence</div>
       </a>
     </div>
+  </div>
 
-    <h2>Ongoing — Ask It. Build It. Embed It.</h2>
-    <p>An ongoing series of whiteboard working sessions on AI system architecture — hosted assistant interfaces, agentic coding environments, and programmatic access through APIs — among a trusted circle of law students and practicing attorneys. The sessions run on shared ideas rather than instruction: each discussion tests and sharpens every participant's working methods, toward a stable common vocabulary in an area where the discourse is otherwise vendor marketing or vague caution.</p>
-    <p>A fixed whiteboard framework and a supporting 22-page technical reference keep the conversations grounded — the three access modes, the distinction between intelligence and automation, and verification duties that scale with consequence — so what the group works out in one session holds steady into the next.</p>
-    <p style="margin-top:1rem"><a href="/writing/ask-build-embed/" style="font-family:var(--sans); font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep); text-decoration:none; border-bottom:1px solid var(--gold-edge); padding-bottom:.15rem;">Read the guide — Ask It. Build It. Embed It. →</a></p>
+  <div class="tab-panel" id="tab-series">
+    <div class="cards">
+      <a class="card" href="/writing/ask-build-embed/">
+        <div class="card-eyebrow">Ongoing &middot; Whiteboard Working Sessions</div>
+        <div class="card-title">Ask It. Build It. Embed It.</div>
+        <div class="card-hook">The whiteboard guide that anchors the sessions &mdash; three access modes, intelligence versus automation, and verification duties that scale with consequence.</div>
+        <div class="card-tags">AI Architecture &middot; Access Modes &middot; Verification</div>
+      </a>
+    </div>
+    <div class="prose" style="margin-top:1.8rem">
+      <p>An ongoing series of whiteboard working sessions on AI system architecture — hosted assistant interfaces, agentic coding environments, and programmatic access through APIs — among a trusted circle of law students and practicing attorneys. The sessions run on shared ideas rather than instruction: each discussion tests and sharpens every participant's working methods, toward a stable common vocabulary in an area where the discourse is otherwise vendor marketing or vague caution.</p>
+      <p>A fixed whiteboard framework and a supporting 22-page technical reference keep the conversations grounded — the three access modes, the distinction between intelligence and automation, and verification duties that scale with consequence — so what the group works out in one session holds steady into the next.</p>
+    </div>
   </div>
 
   <a href="/" class="back-link">Home</a>
+
+  <script>
+  function showTab(name){
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+    document.getElementById('tab-'+name).classList.add('active');
+    document.getElementById('tab-btn-'+name).classList.add('active');
+  }
+  if(location.hash==='#series'){showTab('series')}
+  </script>
 
   <footer>
     <p class="disclaimer">Joshua McElwee is a J.D. candidate and is not admitted to practice law in Florida. This website is a professional portfolio and does not offer legal services or legal advice. Project descriptions are limited to information appropriate for public disclosure; nonpublic employer and client materials are not reproduced. Please do not send confidential or case-specific information.</p>
