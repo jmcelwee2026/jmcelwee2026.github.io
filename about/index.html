@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Joshua McElwee</title>
+<meta name="description" content="Professional identity, skill areas, credentials, and contact. Full career detail on LinkedIn.">
+<link rel="canonical" href="https://joshuamcelwee.com/about/">
+<meta property="og:title" content="About — Joshua McElwee">
+<meta property="og:description" content="Professional identity, skill areas, credentials, and contact. Full career detail on LinkedIn.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://joshuamcelwee.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+:root{
+  --ink:#14161A; --ink-soft:#3E444D; --ink-faint:#737983;
+  --gold:#C9A20E; --gold-deep:#8E7108; --gold-edge:#E2D6A9;
+  --paper:#F6F3EB; --paper-warm:#EFEAD9;
+  --serif:"Iowan Old Style","Charter","Palatino Linotype","Palatino","Hoefler Text",Georgia,serif;
+  --sans:"Avenir Next","Optima","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:var(--serif); color:var(--ink); background:var(--paper);
+  display:flex; min-height:100vh;
+}
+.rail{
+  width:220px; min-height:100vh; background:var(--ink); flex:none;
+  display:flex; flex-direction:column; align-items:center;
+  padding:4.5rem 0 2rem;
+}
+.rail .mark{width:96px; height:96px}
+.rail nav{
+  margin-top:3rem; font-family:var(--sans); font-size:.78rem;
+  letter-spacing:.16em; text-transform:uppercase; text-align:center;
+  line-height:2.4;
+}
+.rail nav a{display:block; color:var(--ink-faint); text-decoration:none; padding:0 .8rem;}
+.rail nav a:hover{color:var(--gold-edge)}
+.rail nav a.current{color:var(--gold)}
+.seam{width:1.5px; background:var(--gold); flex:none}
+main{
+  flex:1; display:flex; flex-direction:column;
+  padding:11vh 9vw 4vh; max-width:900px;
+}
+main.long{justify-content:flex-start; padding-top:6vh}
+h1{font-size:clamp(2.1rem,4.6vw,3.2rem); font-weight:700; letter-spacing:.005em}
+h1.small{font-size:clamp(1.6rem,3.2vw,2.2rem)}
+h2{
+  font-family:var(--sans); font-size:.82rem; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft);
+  margin:2.4rem 0 .9rem;
+}
+h3{
+  font-family:var(--serif); font-size:1.35rem; font-weight:600;
+  color:var(--ink); margin:1.8rem 0 .6rem;
+}
+.cred{
+  font-family:var(--sans); font-size:.72rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-soft); margin-top:.9rem; line-height:1.9;
+}
+.tagline{
+  font-family:var(--sans); font-size:.78rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-soft); margin-top:.6rem; line-height:1.7;
+}
+.rule{border:none; border-top:3px double var(--gold); margin:2.2rem 0; width:6.5rem}
+.rule.thin{border-top-width:1px; opacity:.5}
+.rule.wide{width:12rem}
+.bio{font-size:1.08rem; line-height:1.75; color:var(--ink-soft); max-width:34rem}
+.bio + .bio{margin-top:1rem}
+.prose{font-size:1.02rem; line-height:1.75; color:var(--ink-soft); max-width:38rem}
+.prose p + p{margin-top:1rem}
+.prose p b, .prose p strong{color:var(--ink); font-weight:600}
+.prose ul{list-style:none; margin-top:.6rem}
+.prose ul li{padding-left:1.4rem; position:relative; margin-top:.4rem; color:var(--ink-soft); line-height:1.65;}
+.prose ul li::before{content:"§"; position:absolute; left:0; color:var(--gold); font-weight:600; font-size:.9rem;}
+.aside{
+  margin-top:1.4rem; padding:1rem 1.2rem;
+  border-left:3px solid var(--gold); background:rgba(201,162,14,.05);
+  font-family:var(--sans); font-size:.86rem; line-height:1.6;
+  color:var(--ink-soft); max-width:38rem;
+}
+.contact{margin-top:2.6rem; font-family:var(--sans); font-size:.9rem; line-height:2;}
+.contact a{color:var(--gold-deep); text-decoration:none; border-bottom:1px solid var(--gold-edge)}
+.contact a:hover{color:var(--ink); border-bottom-color:var(--gold)}
+.contact .sep{color:var(--gold); margin:0 .55rem}
+
+.cards{margin-top:1.2rem; max-width:38rem}
+.card{
+  display:block; padding:1.1rem 0; border-bottom:1px solid var(--gold-edge);
+  text-decoration:none; color:var(--ink);
+}
+.card:first-child{border-top:1px solid var(--gold-edge)}
+.card:hover{background:rgba(201,162,14,.04)}
+.card .card-eyebrow{
+  font-family:var(--sans); font-size:.7rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--gold-deep); margin-bottom:.3rem;
+}
+.card .card-title{font-family:var(--serif); font-size:1.2rem; font-weight:600; color:var(--ink); line-height:1.35;}
+.card .card-hook{font-family:var(--serif); font-size:.98rem; color:var(--ink-soft); margin-top:.4rem; line-height:1.6;}
+.card .card-tags{font-family:var(--sans); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); margin-top:.6rem;}
+
+.case-meta{font-family:var(--sans); font-size:.8rem; letter-spacing:.08em; color:var(--ink-soft); margin-top:.8rem; line-height:1.7;}
+.case-tags{font-family:var(--sans); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep); margin-top:.6rem;}
+
+.back-link{
+  display:inline-block; font-family:var(--sans); font-size:.78rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep);
+  text-decoration:none; margin-top:3rem;
+}
+.back-link:hover{color:var(--ink)}
+.back-link::before{content:"← "; color:var(--gold)}
+
+.capability-grid{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:1.4rem 2rem; margin-top:1rem; max-width:38rem;
+}
+@media (max-width:520px){.capability-grid{grid-template-columns:1fr}}
+.capability-grid .cat{
+  font-family:var(--sans); font-size:.72rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--gold-deep); font-weight:700;
+  margin-bottom:.4rem;
+}
+.capability-grid .items{
+  font-family:var(--serif); font-size:.98rem; color:var(--ink-soft);
+  line-height:1.55;
+}
+
+footer{margin-top:auto; padding-top:3rem; max-width:38rem;}
+footer .disclaimer{
+  font-family:var(--sans); font-size:.72rem; line-height:1.6;
+  color:var(--ink-faint); font-style:italic;
+  border-top:1px solid var(--gold-edge); padding-top:1rem;
+}
+footer .signoff{font-family:var(--sans); font-size:.72rem; letter-spacing:.06em; color:var(--ink-faint); margin-top:1rem;}
+footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted var(--gold-edge)}
+
+@media (max-width:760px){
+  body{flex-direction:column}
+  .rail{
+    width:100%; min-height:0; padding:2rem 1.4rem 1.4rem;
+    flex-direction:row; justify-content:space-between; align-items:center;
+  }
+  .rail .mark{width:56px; height:56px}
+  .rail nav{
+    margin-top:0; font-size:.66rem; line-height:1.4; text-align:right;
+    display:flex; flex-wrap:wrap; gap:.4rem .9rem; justify-content:flex-end;
+  }
+  .rail nav a{display:inline; padding:0}
+  .seam{width:100%; height:1.5px}
+  main{padding:2.4rem 1.6rem 2rem}
+  h2{margin-top:2rem}
+  footer{padding-top:2.4rem}
+}
+
+.tabs{display:flex; gap:2.4rem; margin-top:2.2rem; border-bottom:1px solid var(--gold-edge); font-family:var(--sans); font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; max-width:38rem;}
+.tabs button{background:none; border:none; cursor:pointer; color:var(--ink-faint); padding:0 0 .7rem; font-family:inherit; font-size:inherit; letter-spacing:inherit; text-transform:inherit;}
+.tabs button:hover{color:var(--ink-soft)}
+.tabs button.active{color:var(--gold-deep); border-bottom:2px solid var(--gold); margin-bottom:-1px;}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.photo-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:1.2rem; margin:2.2rem 0; max-width:38rem;}
+figure.photo{margin:0}
+figure.photo img{width:100%; height:215px; object-fit:cover; border:1px solid var(--gold-edge); display:block; filter:saturate(.38) sepia(.16) contrast(.9) brightness(1.04); transition:filter .6s ease;}
+figure.photo:hover img{filter:saturate(1) sepia(0) contrast(1) brightness(1);}
+@media (prefers-reduced-motion: reduce){figure.photo img{transition:none}}
+figure.photo figcaption{font-family:var(--sans); font-size:.7rem; letter-spacing:.08em; color:var(--ink-faint); margin-top:.55rem; line-height:1.5;}
+figure.photo.missing img{display:none}
+figure.photo.missing::before{content:"Add photo: " attr(data-file); display:flex; align-items:center; justify-content:center; height:215px; border:1px dashed var(--gold-edge); font-family:var(--sans); font-size:.72rem; color:var(--ink-faint); letter-spacing:.08em;}
+
+</style>
+</head>
+<body>
+<div class="rail">
+  <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="McElwee mark">
+    <circle cx="100" cy="100" r="37" fill="#000000"/>
+    <circle cx="100" cy="100" r="40" fill="none" stroke="#C9A20E" stroke-width="7"/>
+    <g fill="none" stroke="#C9A20E">
+      <circle cx="100" cy="100" r="46.5" stroke-width="1.2" opacity="0.5"/>
+      <circle cx="100" cy="100" r="52" stroke-width="2.6" opacity="0.5"/>
+      <circle cx="100" cy="100" r="67" stroke-width="1.9" opacity="0.28"/>
+      <circle cx="100" cy="100" r="85" stroke-width="1.4" opacity="0.14"/>
+    </g>
+  </svg>
+  <nav aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/writing/">Writing</a>
+    <a href="/about/" class="current">About</a>
+  </nav>
+</div>
+<div class="seam" aria-hidden="true"></div>
+<main class="long">
+  <h1 class="small">About</h1>
+  <p class="cred">Professional identity · Skill areas · How to reach me</p>
+  <hr class="rule">
+  <div class="tabs" role="tablist">
+    <button class="active" id="tab-btn-professional" onclick="showTab('professional')">Professional</button>
+    <button id="tab-btn-personal" onclick="showTab('personal')">Personal</button>
+  </div>
+  <div class="tab-panel active" id="tab-professional">
+
+  <div class="prose">
+    <p>I am a Juris Doctor candidate at Ave Maria School of Law focused on applied legal technology — using AI-directed research, government-data investigation, and workflow automation to produce accurate, reviewable legal work product across regulatory and public-sector settings.</p>
+
+    <p>Across every setting, applied technology has been the constant: AI-directed federal regulatory and funding research, multi-model AI workflows for commercial real-estate research, contract-management platform evaluation for public-sector legal operations, and desktop process automation within a state trial court. Each is developed as a case study in Selected Work.</p>
+  </div>
+
+  <h2>Skill Areas</h2>
+  <div class="capability-grid">
+    <div>
+      <div class="cat">Legal</div>
+      <div class="items">Regulatory research · statutory interpretation · administrative-law research · legal writing · contract analysis</div>
+    </div>
+    <div>
+      <div class="cat">Data</div>
+      <div class="items">Government and public-data APIs · structured-data research · dataset filtering · data validation · historical data reconstruction</div>
+    </div>
+    <div>
+      <div class="cat">AI</div>
+      <div class="items">Multi-model orchestration · AI-directed legal research · AI-output validation · tool selection · workflow design · professional-responsibility discipline in AI use</div>
+    </div>
+    <div>
+      <div class="cat">Systems</div>
+      <div class="items">Contract-management evaluation · court information systems · desktop workflow automation · cross-functional IT collaboration · process optimization</div>
+    </div>
+    <div>
+      <div class="cat">Delivery</div>
+      <div class="items">Written legal work product · interactive HTML · research presentations to professional audiences · public-facing research · executive/supervisor communication</div>
+    </div>
+  </div>
+
+  <h2>Credentials</h2>
+  <div class="prose">
+    <p>The practice of law is being handed a genuinely new horizon, and in proactive effort to read the water — and not get lost at sea — I have been charting it on purpose.</p>
+    <p>Most of that has meant AI and the law: Clio's Legal AI track end to end — Fundamentals, Emerging, and Advanced (December 2025 through August 2026); Harvey's Legal Engineer certification at the foundational level (2026); and, as a law student before licensure, attending two Rossdale continuing-legal-education webinars on generative AI in practice — <i>Mastering Artificial Intelligence &amp; ChatGPT Law in 2026</i> and <i>Cutting-Edge AI, ChatGPT and Generative AI Law in 2026</i>.</p>
+    <p>Beneath the new instruments sit the enduring ones: LexisNexis Applied Legal Research certificates across secondary sources, statutory law, case law, and litigation — and one cheerful outlier, a Negotiation Professional certificate, because however far the horizon moves, the work still comes down to people in a room.</p>
+  </div>
+
+  <h2>Contact</h2>
+  <div class="prose">
+    <p>
+      <a href="mailto:jmcelwee@avemarialaw.edu" style="color:var(--gold-deep); border-bottom:1px solid var(--gold-edge); text-decoration:none;">jmcelwee@avemarialaw.edu</a>
+      <span class="sep" style="color:var(--gold); margin:0 .55rem;">·</span>
+      <a href="https://www.linkedin.com/in/joshuamcelwee/" style="color:var(--gold-deep); border-bottom:1px solid var(--gold-edge); text-decoration:none;">LinkedIn</a>
+    </p>
+    <p style="font-family:var(--sans); font-size:.86rem; color:var(--ink-faint); margin-top:1.4rem;">Full career detail and connection lives on LinkedIn. This site is a professional portfolio, not a legal-services intake — please do not send confidential or case-specific information.</p>
+  </div>
+
+  </div>
+  <div class="tab-panel" id="tab-personal">
+    <div class="prose" style="margin-top:2.2rem">
+      <p>Raised in East Texas.</p>
+      <p>Married for almost ten years. This year we welcomed our first child and started raising a family of our own.</p>
+      <p>I believe the people we meet make us. The work on this site has people behind it — teachers, judges, attorneys, paralegals, family. A person is easier to place when you have a reference point; consider this page mine.</p>
+    </div>
+    <div class="photo-row">
+      <figure class="photo" data-file="about/photos/first-fishing.jpg">
+        <img src="/about/photos/first-fishing.jpg" alt="Childhood photo holding my first fish, East Texas" onerror="this.closest('figure').classList.add('missing')">
+        <figcaption>The first fish.</figcaption>
+      </figure>
+      <figure class="photo" data-file="about/photos/collage.jpg">
+        <img src="/about/photos/collage.jpg" alt="Four photos of my grandfather" onerror="this.closest('figure').classList.add('missing')">
+        <figcaption>My grandfather — he enjoyed all of it.</figcaption>
+      </figure>
+      <figure class="photo" data-file="about/photos/pond.jpg">
+        <img src="/about/photos/pond.jpg" alt="My cousin and wife fishing at a pond" onerror="this.closest('figure').classList.add('missing')">
+        <figcaption>My cousin and wife, lines in.</figcaption>
+      </figure>
+      <figure class="photo" data-file="about/photos/washington.jpg">
+        <img src="/about/photos/washington.jpg" alt="A well-worn copy of Chernow's Washington: A Life" onerror="this.closest('figure').classList.add('missing')">
+        <figcaption>My type of reading.</figcaption>
+      </figure>
+      <figure class="photo" data-file="about/photos/daughter.jpg">
+        <img src="/about/photos/daughter.jpg" alt="Asleep on Dad" onerror="this.closest('figure').classList.add('missing')">
+        <figcaption>The newest title.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <script>
+  function showTab(name){
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+    document.getElementById('tab-'+name).classList.add('active');
+    document.getElementById('tab-btn-'+name).classList.add('active');
+  }
+  if(location.hash==='#personal'){showTab('personal')}
+  </script>
+
+  <a href="/" class="back-link">Home</a>
+
+  <footer>
+    <p class="disclaimer">Joshua McElwee is a J.D. candidate and is not admitted to practice law in Florida. This website is a professional portfolio and does not offer legal services or legal advice. Project descriptions are limited to information appropriate for public disclosure; nonpublic employer and client materials are not reproduced. Please do not send confidential or case-specific information.</p>
+    <p class="signoff">Joshua McElwee · Fort Myers, Florida · <a href="https://www.linkedin.com/in/joshuamcelwee/" rel="me">LinkedIn</a> · MMXXVI</p>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask It. Build It. Embed It. — A Technical Reference and Plain-Language Guide — Joshua McElwee</title>
+<meta name="description" content="A starting source on how AI systems are actually used: hosted assistants, agentic coding environments, and APIs — with the verification duties that scale with consequence.">
+<link rel="canonical" href="https://joshuamcelwee.com/writing/ask-build-embed/">
+<meta property="og:title" content="Ask It. Build It. Embed It.">
+<meta property="og:description" content="A technical reference and plain-language guide to AI system architecture, shared as a starting source.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://joshuamcelwee.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+:root{
+  --ink:#14161A; --ink-soft:#3E444D; --ink-faint:#737983;
+  --gold:#C9A20E; --gold-deep:#8E7108; --gold-edge:#E2D6A9;
+  --paper:#F6F3EB;
+  --ask:#47684F; --build:#41586F; --embed:#8A4A42;
+  --ask-soft:rgba(71,104,79,.07); --build-soft:rgba(65,88,111,.07); --embed-soft:rgba(138,74,66,.07);
+  --serif:"Iowan Old Style","Charter","Palatino Linotype","Palatino","Hoefler Text",Georgia,serif;
+  --sans:"Avenir Next","Optima","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:var(--serif); color:var(--ink); background:var(--paper); display:flex; min-height:100vh;}
+.rail{width:220px; min-height:100vh; background:var(--ink); flex:none; display:flex; flex-direction:column; align-items:center; padding:4.5rem 0 2rem;}
+.rail .mark{width:96px; height:96px}
+.rail nav{margin-top:3rem; font-family:var(--sans); font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; text-align:center; line-height:2.4;}
+.rail nav a{display:block; color:var(--ink-faint); text-decoration:none; padding:0 .8rem;}
+.rail nav a:hover{color:var(--gold-edge)}
+.rail nav a.current{color:var(--gold)}
+.seam{width:1.5px; background:var(--gold); flex:none}
+main{flex:1; display:flex; flex-direction:column; padding:6vh 7vw 4vh; max-width:980px;}
+h1{font-size:clamp(2rem,4vw,2.9rem); font-weight:700; letter-spacing:.005em; line-height:1.1}
+h1 .ask{color:var(--ask)} h1 .build{color:var(--build)} h1 .embed{color:var(--embed)}
+.subtitle{font-family:var(--serif); font-size:1.15rem; color:var(--ink-soft); margin-top:.9rem; max-width:42rem; line-height:1.6}
+.cred{font-family:var(--sans); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin-top:1rem; line-height:1.9;}
+.rule{border:none; border-top:3px double var(--gold); margin:2.2rem 0; width:6.5rem}
+h2{font-family:var(--sans); font-size:.95rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ink); margin:3.4rem 0 1rem; padding-top:1.2rem; border-top:1px solid var(--gold-edge);}
+h2 .num{color:var(--gold-deep); margin-right:.6rem}
+h3{font-family:var(--sans); font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin:2rem 0 .7rem;}
+.prose{font-size:1.02rem; line-height:1.75; color:var(--ink-soft); max-width:44rem}
+.prose p + p{margin-top:1rem}
+.prose p b, .prose p strong{color:var(--ink); font-weight:600}
+.prose ol, .prose ul{margin:.6rem 0 .6rem 1.4rem}
+.prose li{margin-top:.35rem; line-height:1.65; color:var(--ink-soft)}
+table{border-collapse:collapse; width:100%; max-width:52rem; margin:1rem 0 1.6rem; font-size:.95rem;}
+th{font-family:var(--sans); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; text-align:left; color:var(--paper); background:var(--ink-soft); padding:.55rem .8rem;}
+td{padding:.6rem .8rem; border-bottom:1px solid var(--gold-edge); color:var(--ink-soft); line-height:1.55; vertical-align:top;}
+td:first-child{font-weight:600; color:var(--ink); width:32%}
+table.ask th{background:var(--ask)} table.build th{background:var(--build)} table.embed th{background:var(--embed)}
+table.ask td:first-child{color:var(--ask)} table.build td:first-child{color:var(--build)} table.embed td:first-child{color:var(--embed)}
+.aside{margin:1.4rem 0; padding:1rem 1.2rem; border-left:3px solid var(--gold); background:rgba(201,162,14,.05); font-family:var(--sans); font-size:.88rem; line-height:1.65; color:var(--ink-soft); max-width:44rem;}
+.aside b{color:var(--ink)}
+.aside.ask{border-left-color:var(--ask); background:var(--ask-soft)}
+.aside.build{border-left-color:var(--build); background:var(--build-soft)}
+.aside.embed{border-left-color:var(--embed); background:var(--embed-soft)}
+.modes{display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin:1.8rem 0; max-width:52rem}
+.mode{border:1px solid var(--gold-edge); padding:1.2rem; background:#FBF9F2}
+.mode .m-name{font-family:var(--sans); font-size:.85rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase}
+.mode.ask .m-name{color:var(--ask)} .mode.build .m-name{color:var(--build)} .mode.embed .m-name{color:var(--embed)}
+.mode .m-sub{font-family:var(--sans); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); margin-top:.3rem}
+.mode p{font-size:.92rem; color:var(--ink-soft); line-height:1.6; margin-top:.7rem}
+.toc{font-family:var(--sans); font-size:.82rem; letter-spacing:.06em; line-height:2.1; columns:2; max-width:44rem; margin-top:1rem}
+.toc a{color:var(--gold-deep); text-decoration:none; border-bottom:1px solid var(--gold-edge)}
+.toc a:hover{color:var(--ink)}
+pre.tmpl{font-family:"SF Mono",Menlo,Consolas,monospace; font-size:.8rem; line-height:1.7; color:var(--ink-soft); background:#FBF9F2; border:1px solid var(--gold-edge); padding:1.1rem 1.3rem; margin:.8rem 0 1.4rem; white-space:pre-wrap; max-width:52rem;}
+.one-sentence{margin:3.6rem 0 1rem; padding:2rem 1.6rem; border-top:3px double var(--gold); border-bottom:3px double var(--gold); max-width:52rem; text-align:center}
+.one-sentence .lead{font-family:var(--serif); font-size:1.35rem; font-weight:600; color:var(--ink); line-height:1.5}
+.one-sentence .tail{font-family:var(--sans); font-size:.85rem; letter-spacing:.14em; text-transform:uppercase; color:var(--embed); margin-top:1rem}
+.invite{margin:2.6rem 0 0; padding:1.6rem 1.6rem; background:rgba(201,162,14,.05); border:1px solid var(--gold-edge); max-width:44rem; font-size:1.02rem; line-height:1.75; color:var(--ink-soft)}
+.invite a{color:var(--gold-deep); text-decoration:none; border-bottom:1px solid var(--gold-edge)}
+.sources{font-size:.88rem; line-height:1.8; max-width:44rem; color:var(--ink-soft)}
+.sources a{color:var(--gold-deep); text-decoration:none; border-bottom:1px solid var(--gold-edge); word-break:break-all}
+.back-link{display:inline-block; font-family:var(--sans); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep); text-decoration:none; margin-top:3rem;}
+.back-link:hover{color:var(--ink)}
+.back-link::before{content:"← "; color:var(--gold)}
+footer{margin-top:auto; padding-top:3rem; max-width:44rem;}
+footer .disclaimer{font-family:var(--sans); font-size:.72rem; line-height:1.6; color:var(--ink-faint); font-style:italic; border-top:1px solid var(--gold-edge); padding-top:1rem;}
+footer .signoff{font-family:var(--sans); font-size:.72rem; letter-spacing:.06em; color:var(--ink-faint); margin-top:1rem;}
+footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted var(--gold-edge)}
+@media (max-width:900px){.modes{grid-template-columns:1fr}.toc{columns:1}}
+@media (max-width:760px){
+  body{flex-direction:column}
+  .rail{width:100%; min-height:0; padding:2rem 1.4rem 1.4rem; flex-direction:row; justify-content:space-between; align-items:center;}
+  .rail .mark{width:56px; height:56px}
+  .rail nav{margin-top:0; font-size:.66rem; line-height:1.4; text-align:right; display:flex; flex-wrap:wrap; gap:.4rem .9rem; justify-content:flex-end;}
+  .rail nav a{display:inline; padding:0}
+  .seam{width:100%; height:1.5px}
+  main{padding:2.4rem 1.4rem 2rem}
+  td:first-child{width:auto}
+}
+@media print{
+  .rail,.seam,.back-link{display:none}
+  main{padding:0; max-width:none}
+  body{background:#fff}
+  h2{page-break-after:avoid}
+  table,.aside,.mode,pre.tmpl{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="rail">
+  <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="McElwee mark">
+    <circle cx="100" cy="100" r="37" fill="#000000"/>
+    <circle cx="100" cy="100" r="40" fill="none" stroke="#C9A20E" stroke-width="7"/>
+    <g fill="none" stroke="#C9A20E">
+      <circle cx="100" cy="100" r="46.5" stroke-width="1.2" opacity="0.5"/>
+      <circle cx="100" cy="100" r="52" stroke-width="2.6" opacity="0.5"/>
+      <circle cx="100" cy="100" r="67" stroke-width="1.9" opacity="0.28"/>
+      <circle cx="100" cy="100" r="85" stroke-width="1.4" opacity="0.14"/>
+    </g>
+  </svg>
+  <nav aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/writing/" class="current">Writing</a>
+    <a href="/about/">About</a>
+  </nav>
+</div>
+<div class="seam" aria-hidden="true"></div>
+<main>
+
+  <p class="cred">A starting source · shared freely · August 2026</p>
+  <h1><span class="ask">Ask it.</span> <span class="build">Build it.</span> <span class="embed">Embed it.</span></h1>
+  <p class="subtitle">A technical reference and plain-language guide to how AI systems are actually used — hosted assistants, agentic coding environments, and programmatic access through APIs — and the verification duties that scale with consequence.</p>
+  <hr class="rule">
+  <div class="aside"><b>The governing sentence.</b> You can ask a hosted AI system for help, use an agentic coding system to build or operate something, or connect software to models and other services through APIs. The first two tools help you understand, design, test, and implement the third.</div>
+
+  <div class="prose"><p>This guide comes out of ongoing whiteboard working sessions with a trusted circle of law students and attorneys, where the working rule is shared ideas rather than instruction. It is offered here as a starting source, not a final word. Product names, plan limits, and prices change quickly; the technical distinctions are the stable part.</p></div>
+
+  <h3>Contents</h3>
+  <div class="toc">
+    <a href="#map">1 · The complete map</a><br>
+    <a href="#ask">2 · Ask It</a><br>
+    <a href="#build">3 · Build It</a><br>
+    <a href="#embed">4 · Embed It</a><br>
+    <a href="#automation">5 · AI is not automation</a><br>
+    <a href="#legal">6 · Legal professional use</a><br>
+    <a href="#dictionary">7 · Translation dictionary</a><br>
+    <a href="#templates">8 · Reusable templates</a><br>
+    <a href="#sources">9 · Authorities and sources</a><br>
+  </div>
+
+
+  <h2 id="map"><span class="num">1</span>The Complete Map</h2>
+  <div class="prose"><p>Three access modes, one stack of capabilities.</p></div>
+  <div class="modes">
+    <div class="mode ask">
+      <div class="m-name">Ask It</div>
+      <div class="m-sub">Hosted assistant interface</div>
+      <p>You communicate directly with the system and receive an answer, analysis, or document.</p>
+    </div>
+    <div class="mode build">
+      <div class="m-name">Build It</div>
+      <div class="m-sub">Agentic coding environment</div>
+      <p>You give the system a bounded workspace, tools, and a result to create or change.</p>
+    </div>
+    <div class="mode embed">
+      <div class="m-name">Embed It</div>
+      <div class="m-sub">Programmatic access through APIs</div>
+      <p>Software sends requests to models or services and uses the returned result inside a larger process.</p>
+    </div>
+  </div>
+  <div class="aside"><b>Plain-language summary.</b> Chat lets you use a finished appliance. An agentic coding environment helps you design, build, repair, and operate appliances. APIs are the standardized connection points that let the appliance draw on models, data, and services.</div>
+
+<table class=""><thead><tr><th>Payment model</th><th>What it means</th></tr></thead><tbody><tr><td>Subscription</td><td>A recurring fee for access to a hosted application or seat, subject to plan features, usage allowances, rate limits, and acceptable-use rules. “Fixed price” does not always mean unlimited use.</td></tr><tr><td>Metered</td><td>A variable charge based on measured consumption. AI APIs commonly meter input tokens, output tokens, cached context, tool calls, searches, runtime, storage, or a combination.</td></tr><tr><td>The stack</td><td>A hosted assistant can call APIs behind the scenes. A coding agent can write and test the code that calls APIs. An API-powered application can itself contain a chat interface, a coding agent, an automated workflow, or all three.</td></tr></tbody></table>
+<div class="aside"><b>The most important technical correction.</b> The API is not the model. The model is the computational system that performs inference; the API is the standardized connection through which software requests that capability. An API can also expose non-AI capabilities: court data, regulations, calendars, payments, document conversion. And a locally hosted model can be exposed through a local API — API does not necessarily mean cloud.</div>
+
+  <h2 id="ask"><span class="num">2</span>Ask It — Hosted Assistants and Direct Prompting</h2>
+  <div class="prose"><p>A hosted AI assistant is a vendor-managed application that accepts natural-language and multimodal input, assembles a working context, invokes one or more models and tools, and returns text, images, files, code, or analysis through a conversational interface.</p>
+  <p><b>What happens technically:</b> the application receives your prompt, files, and history; selects or routes to a model, possibly with tools such as search or code execution; the model performs inference — computing a probable and useful output from the supplied context; the result returns in human-facing form; you review, correct, refine, and verify.</p></div>
+
+<table class="ask"><thead><tr><th>The four questions</th><th>What each means</th><th>Say it out loud</th></tr></thead><tbody><tr><td>1 · Context — what should it know?</td><td>The information available for the current inference: instructions, facts, documents, prior messages, retrieved sources. Bounded by a context window measured in tokens.</td><td>“What background, facts, documents, and role does the system need before it can do the job well?”</td></tr><tr><td>2 · Task — what should it do?</td><td>The intended cognitive operation: explain, compare, extract, classify, critique, calculate, draft, recommend.</td><td>“What exact job am I assigning?”</td></tr><tr><td>3 · Constraints — what rules must it follow?</td><td>Scope, sources, exclusions, governing law, audience, style, risk controls, prohibited behavior. They reduce ambiguity but do not guarantee correctness.</td><td>“What boundaries should control the work?”</td></tr><tr><td>4 · Output — what should the result look like?</td><td>Format, structure, level of detail, citation method, file type, acceptance criteria.</td><td>“What does a useful answer look like when it comes back?”</td></tr></tbody></table>
+
+  <div class="aside ask"><b>One complete legal prompt.</b> Context: I am reviewing a motion under Florida law. Task: identify the strongest deficiencies. Constraints: use only the attached authorities and record; do not invent facts or citations. Output: a short memo organized by issue, rule, analysis, recommendation, and a source table with pin cites.</div>
+  <h3>Verify according to consequence</h3>
+  <div class="prose"><p>Accuracy is not one universal threshold; the acceptable error rate depends on what the output is for. Brainstorming tolerates roughness. Legal authority, deadlines, client facts, and filed representations require direct verification.</p></div>
+
+<table class=""><thead><tr><th>Example</th><th>Why the percentage is not the whole question</th></tr></thead><tbody><tr><td>1,000 extracted facts at 99.9%</td><td>Statistically, about one error remains.</td></tr><tr><td>10,000 citations at 99.9%</td><td>Statistically, about ten errors remain.</td></tr><tr><td>One dispositive case</td><td>A single fabricated, overruled, or misread authority can materially damage the work even if every other item is correct.</td></tr></tbody></table>
+
+  <h2 id="build"><span class="num">3</span>Build It — Agentic Coding Environments</h2>
+  <div class="prose"><p>A coding agent is an AI-enabled software agent that can inspect a project workspace, edit multiple files, execute commands, run tests, read logs, and iterate toward a specified result. Its practical capability comes from the combination of a model, tools, workspace access, execution, memory or state, and a control loop.</p></div>
+  <div class="aside build"><b>The conceptual jump.</b> Chat: “Review these documents and identify deficiencies.” Coding agent: “Build a repeatable system that reviews this class of documents, identifies deficiencies, preserves the sources, and produces the required artifacts.”</div>
+
+<table class="build"><thead><tr><th>The four questions</th><th>What each means</th><th>Say it out loud</th></tr></thead><tbody><tr><td>1 · What can it see and touch?</td><td>The execution scope: working directory, files, databases, network access, tools, credentials, read and write permissions. A sandbox and approval policy enforce boundaries.</td><td>“What am I allowing it to read, change, run, or reach?”</td></tr><tr><td>2 · What do I want it to make or do?</td><td>The functional specification: desired behavior, inputs, processing steps, edge cases, acceptance criteria.</td><td>“What should the finished thing accomplish, step by step?”</td></tr><tr><td>3 · What is it allowed to do and not do?</td><td>Guardrails and least-privilege controls: source restrictions, forbidden commands, protected originals, confidentiality boundaries, approval requirements, stop conditions.</td><td>“What boundaries must it never cross, even if crossing them would be easier?”</td></tr><tr><td>4 · What does done look like?</td><td>The definition of done: working output, passing tests, required formats, source map, run log, instructions, reproducibility, human acceptance.</td><td>“What exact files, evidence, tests, and instructions must exist before I call it complete?”</td></tr></tbody></table>
+
+  <h3>Why task decomposition matters</h3>
+  <div class="prose"><p>A complex result should not be treated as one giant generation. It decomposes into stages with intermediate artifacts and checks: preserve and inventory the sources; extract text and metadata repeatably; apply the defined checklist or rule set; generate structured findings with source references; run tests and quality checks; render the outputs; inspect the final artifacts and record remaining limitations.</p>
+  <p>The agent does not merely produce a confident final memo. It leaves a chain of inspectable work products that can be reviewed, rerun, corrected, and compared.</p></div>
+
+
+  <h2 id="embed"><span class="num">4</span>Embed It — APIs as Standardized Access</h2>
+  <div class="prose"><p>An application programming interface is a defined contract that allows one software system to request data or operations from another. In a model API, client software sends an authenticated request containing a model selection, instructions, inputs, tools, and parameters; the service performs inference and returns a structured response the client can display, store, validate, or use in another operation.</p></div>
+  <h3>The electricity analogy, stated precisely</h3>
+
+<table class="embed"><thead><tr><th>Electric system</th><th>AI / software system</th></tr></thead><tbody><tr><td>Electric generating capacity</td><td>Model or service capability</td></tr><tr><td>Outlet or standardized connection</td><td>API endpoint and protocol</td></tr><tr><td>Wiring and control circuitry</td><td>Code, SDKs, schemas, and authentication</td></tr><tr><td>Appliance or factory machine</td><td>Application, tool, or workflow</td></tr><tr><td>Electric meter</td><td>Usage accounting: tokens, requests, tool charges</td></tr><tr><td>Timer, switch, relay, control system</td><td>Automation, triggers, orchestration, approvals</td></tr></tbody></table>
+<table class="embed"><thead><tr><th>The three questions</th><th>What each means</th><th>Say it out loud</th></tr></thead><tbody><tr><td>1 · What can I access?</td><td>API discovery and capability analysis: available services, endpoints, data coverage, operations, authentication, schemas, pricing, licensing, retention, rate limits, reliability.</td><td>“What useful data or capability is available through a connection?”</td></tr><tr><td>2 · Can I make it talk to X?</td><td>Systems integration: whether two systems can authenticate, exchange compatible data, map identifiers and fields, handle errors, and satisfy security and legal requirements.</td><td>“Can I connect this source or capability to the tool I already use?”</td></tr><tr><td>3 · What can I make it do?</td><td>Workflow and application design: triggers, input collection, model or service calls, validation, human approval, downstream actions, storage, notifications, monitoring.</td><td>“Once they are connected, what useful process can I create?”</td></tr></tbody></table>
+
+  <div class="aside embed"><b>A practical API workflow.</b> Event or request → gather authorized input → call the API → the model or service analyzes, extracts, classifies, or generates → validate the result (schema checks, source checks, human review) → use the output: update a dashboard, draft a memo, send an alert, save a file.</div>
+  <div class="prose">
+  <p><b>Metered usage, simply:</b> API cost = input usage + output usage + tool and service charges + storage or runtime charges. Cost control means choosing an appropriate model, reducing unnecessary context, caching repeated material, using structured outputs, batching work, setting spend limits, and routing simple tasks to cheaper or local components.</p>
+  <p><b>Local and hybrid systems:</b> a hosted API runs on a vendor's infrastructure under the vendor's terms. Local inference runs model weights on hardware you control — no vendor token charge, but hardware, electricity, maintenance, licensing, and capability tradeoffs. A locally running model can expose a local API to other local software. Sensitive or routine work can remain local while higher-capability tasks call hosted APIs; the best design depends on data risk, required quality, latency, cost, and maintenance capacity.</p>
+  <p><b>A legal example — authority and rulemaking monitor:</b> official-source APIs provide new opinions, Federal Register documents, dockets, and bills; the application stores the original source and retrieval metadata; a model classifies relevance and proposes links to existing matters; the system requires source verification and human approval before anything becomes legal analysis; approved findings update a matter dashboard or draft memorandum. FederalRegister.gov, Regulations.gov, Congress.gov, and CourtListener all expose public endpoints — coverage and terms must be checked per project.</p>
+  </div>
+
+
+  <h2 id="automation"><span class="num">5</span>AI Is Not Automation</h2>
+  <div class="prose"><p>Intelligence, connection, triggers, and orchestration are separate layers. AI supplies probabilistic analysis or generation. Automation runs defined steps because a schedule, event, rule, or user action triggered it. An API is a connection — it does not decide when to run. An agentic workflow combines a model with instructions, tools, state, iterative planning, guardrails, and stopping conditions. A human in the loop is a designed review point before consequential output is used.</p></div>
+
+<table class=""><thead><tr><th>Type</th><th>Technical description</th><th>Normal language</th></tr></thead><tbody><tr><td>Automation only</td><td>A deterministic schedule or rule executes without model inference.</td><td>“Every Friday at 5:00, send me this file.”</td></tr><tr><td>AI only</td><td>A person manually asks a model to perform a cognitive task.</td><td>“Read this file and tell me what looks unusual.”</td></tr><tr><td>AI plus automation</td><td>A trigger collects input, calls a model, validates the result, and performs a downstream step.</td><td>“Every Friday, analyze the file and alert me only if something unusual appears.”</td></tr><tr><td>Agentic workflow</td><td>The system may choose among tools and intermediate steps while remaining inside defined permissions and stop conditions.</td><td>“Review the new materials, gather the approved sources, run the checks, repair any failed output, and present the result for approval.”</td></tr></tbody></table>
+<div class="aside"><b>The safe workflow pattern.</b> Trigger → gather authorized input → call model or service → validate → obtain human approval when required → act → log what happened.</div>
+
+  <h2 id="legal"><span class="num">6</span>Reliability and Legal Professional Use</h2>
+  <div class="prose"><p>The more consequential the work, the more explicit the controls.</p>
+  <p><b>A professional reliability stack:</b> control the source set; separate retrieval from analysis — the model is not the source of the law or the record; require provenance for each material finding; validate structure with schemas and cross-checks rather than accepting free-form prose; current-check authority for negative treatment, amendments, and jurisdiction; review by consequence — a qualified reviewer approves legal conclusions, filings, and deadlines; preserve an audit trail of inputs, versions, outputs, corrections, and approvals.</p></div>
+  <h3>Legal-source verification protocol</h3>
+
+<table class=""><thead><tr><th>Check</th><th>Required action</th></tr></thead><tbody><tr><td>Existence</td><td>Open the cited authority or record item. Confirm it exists and is the document represented.</td></tr><tr><td>Proposition</td><td>Read the relevant text. Confirm it actually supports the stated proposition.</td></tr><tr><td>Pin cite</td><td>Confirm the precise page, paragraph, section, or record location.</td></tr><tr><td>Status</td><td>Check currentness, amendments, negative treatment, jurisdiction, and precedential weight.</td></tr><tr><td>Record fit</td><td>Confirm the legal proposition connects to the actual facts and procedural posture.</td></tr><tr><td>Final responsibility</td><td>The lawyer adopts the conclusion only after independent professional review.</td></tr></tbody></table>
+
+  <div class="prose"><p><b>Confidentiality and access control:</b> minimum necessary data and narrowest practical permissions; read-only access to originals, writes to separate output locations; understand the vendor's retention, training, sharing, deletion, and breach policies before disclosing protected information; protect API keys like passwords; separate matters so an agent cannot browse unrelated information; explicit approval gates for consequential actions; log enough to investigate errors and demonstrate supervision.</p></div>
+  <div class="aside"><b>Core legal rule.</b> AI may assist. The lawyer remains responsible for the sources, the factual record, the legal judgment, the client communication, the fee, and the filing. — ABA Formal Op. 512 (2024); Fla. Bar Ethics Op. 24-1 (2024); <i>Mata v. Avianca, Inc.</i>, 678 F. Supp. 3d 443 (S.D.N.Y. 2023); Fed. R. Civ. P. 11(b), 26(g).</div>
+
+
+  <h2 id="dictionary"><span class="num">7</span>Whiteboard Translation Dictionary</h2>
+  <div class="prose"><p>Technical language paired with the simplest accurate explanation.</p></div>
+
+<table class="ask"><thead><tr><th>Ask It — term</th><th>Board language</th></tr></thead><tbody><tr><td>Hosted AI assistant</td><td>A ready-made application where a person talks directly to AI.</td></tr><tr><td>Model</td><td>The computational system that produces the answer.</td></tr><tr><td>Prompt</td><td>The job instructions and material you give it.</td></tr><tr><td>Context</td><td>What it can consider while doing the current job.</td></tr><tr><td>Task</td><td>The exact job you want performed.</td></tr><tr><td>Constraint</td><td>A rule or boundary for the work.</td></tr><tr><td>Output specification</td><td>What the finished answer or file should look like.</td></tr><tr><td>Grounding</td><td>Making the answer rely on identified sources.</td></tr><tr><td>Hallucination</td><td>A confident-sounding answer that is unsupported or false.</td></tr></tbody></table>
+<table class="build"><thead><tr><th>Build It — term</th><th>Board language</th></tr></thead><tbody><tr><td>Coding agent</td><td>AI that can work through files, code, tools, and steps — not just answer.</td></tr><tr><td>Workspace</td><td>The project area you let it work inside.</td></tr><tr><td>Read / write / network permission</td><td>What it may inspect; what it may change or create; what outside systems it may contact.</td></tr><tr><td>Sandbox</td><td>The fence around where it can act.</td></tr><tr><td>Specification</td><td>A precise description of what to build.</td></tr><tr><td>Acceptance criteria</td><td>The tests for whether the result is actually done.</td></tr><tr><td>Artifact</td><td>The tool, memo, PDF, spreadsheet, or other thing produced.</td></tr><tr><td>Audit trail</td><td>The record showing what happened and why.</td></tr><tr><td>Reproducibility</td><td>Enough preserved process and evidence to rerun and inspect the work.</td></tr></tbody></table>
+<table class="embed"><thead><tr><th>Embed It — term</th><th>Board language</th></tr></thead><tbody><tr><td>API</td><td>A standardized connection that lets software ask another system for data or work.</td></tr><tr><td>Endpoint</td><td>A specific connection for a specific operation.</td></tr><tr><td>Request / response</td><td>What the first system sends; what the second system sends back.</td></tr><tr><td>Authentication / API key</td><td>Proving the software is allowed to use the connection; the secret credential it uses.</td></tr><tr><td>JSON / schema / structured output</td><td>A machine-readable format; the agreed structure of the data; an answer forced into a predictable format.</td></tr><tr><td>Rate limit / latency</td><td>How much or how fast the service lets you use it; how long a result takes.</td></tr><tr><td>Webhook</td><td>One service notifying another that something happened.</td></tr><tr><td>Orchestration</td><td>The logic that coordinates the entire process.</td></tr><tr><td>Local inference / hybrid system</td><td>Running the model on hardware you control; using local and hosted capabilities together.</td></tr></tbody></table>
+
+  <h2 id="templates"><span class="num">8</span>Reusable Templates</h2>
+  <h3>A · Direct assistant prompt</h3>
+  <pre class="tmpl">CONTEXT   [Role, background, governing facts, documents, audience, and what to treat as authoritative.]
+TASK      [The exact cognitive operation and objective.]
+CONSTRAINTS [Source limits, exclusions, governing law, confidentiality limits, uncertainty rules, prohibited assumptions.]
+OUTPUT    [Structure, level of detail, citations, file type, and the definition of a useful result.]</pre>
+  <h3>B · Coding-agent build brief</h3>
+  <pre class="tmpl">PROJECT OBJECTIVE   [The finished capability in one sentence.]
+WORKSPACE AND ACCESS [Folders, files, tools, network access, credentials, read/write boundaries, protected originals.]
+FUNCTIONAL REQUIREMENTS [Inputs, processing steps, outputs, edge cases, user workflow.]
+GUARDRAILS          [Forbidden sources and actions, approval gates, confidentiality limits, stop conditions.]
+DEFINITION OF DONE  [Required artifacts, formats, tests, source mapping, logs, documentation, reproducibility, known-limitations report.]</pre>
+  <h3>C · API discovery prompt</h3>
+  <pre class="tmpl">I want to create this outcome: [describe outcome].
+Identify the systems, data sources, and capabilities that may have APIs.
+For each: available data or operations; authentication; coverage; format; rate limits; pricing; retention; licensing; reliability; legal or security constraints.
+Then propose the simplest architecture, a minimum viable prototype, a test plan, and the questions to answer before implementation.
+Distinguish verified facts from assumptions and cite official documentation for each service.</pre>
+  <h3>D · API integration brief</h3>
+  <pre class="tmpl">OUTCOME     [What event should produce what result.]
+SOURCE SYSTEMS [APIs, databases, files, internal systems.]
+AUTHENTICATION AND SECRETS [How credentials are stored, rotated, and kept out of logs and source control.]
+DATA FLOW   [Trigger → retrieve → normalize → model/service call → validate → approve → act → log.]
+OUTPUT SCHEMA [Required fields, types, source identifiers, uncertainty flags, error states.]
+RELIABILITY [Retries, timeouts, rate-limit handling, monitoring, tests, fallbacks.]
+LEGAL AND SECURITY BOUNDARIES [Permitted data, retention, matter separation, human approval, audit logs, prohibited actions.]</pre>
+  <h3>E · Legal AI quality-control checklist</h3>
+  <div class="prose"><ul>
+    <li>The source exists and was opened.</li>
+    <li>The source is authoritative for the proposition.</li>
+    <li>The quoted or summarized language is accurate; the pin cite is correct.</li>
+    <li>The authority is current with the correct precedential weight.</li>
+    <li>The factual statement is supported by the actual record.</li>
+    <li>No prohibited source was used; no protected information disclosed.</li>
+    <li>The output identifies uncertainty instead of concealing it.</li>
+    <li>A qualified human reviewed the result before consequential use.</li>
+    <li>The inputs, output, corrections, approval, and final artifact were preserved.</li>
+  </ul></div>
+
+
+  <h2 id="sources"><span class="num">9</span>Authorities and Technical Sources</h2>
+  <div class="sources">
+    <p><b>Legal authorities.</b> ABA Comm. on Ethics &amp; Prof'l Responsibility, Formal Op. 512 (2024) · <a href="https://www.floridabar.org/etopinions/opinion-24-1/">Fla. Bar Ethics Op. 24-1 (2024)</a> · <i>Mata v. Avianca, Inc.</i>, 678 F. Supp. 3d 443, 461–66 (S.D.N.Y. 2023) · Fed. R. Civ. P. 11(b), 26(g).</p>
+    <p><b>Vendor documentation</b> (as of August 2026): OpenAI platform and Codex documentation; Anthropic Claude, Claude Code, and API documentation.</p>
+    <p><b>Illustrative legal and government data APIs:</b> <a href="https://www.federalregister.gov/developers/documentation/api/v1">FederalRegister.gov</a> · <a href="https://open.gsa.gov/api/regulationsgov/">Regulations.gov</a> · <a href="https://api.congress.gov/">Congress.gov</a> · <a href="https://github.com/freelawproject/courtlistener-api-client">CourtListener</a>. Coverage, access rules, and terms must be checked for the specific project.</p>
+    <p><i>Currentness note: vendors frequently change model names, plan limits, pricing, interfaces, and tools. The conceptual distinctions in this guide remain valid even when a brand or plan changes.</i></p>
+  </div>
+
+
+  <div class="one-sentence">
+    <div class="lead">Ask a finished AI system for help. Give an agent a bounded workspace to build and operate. Use APIs to connect models, data, and services inside repeatable systems.</div>
+    <div class="tail">Then verify according to consequence.</div>
+  </div>
+
+  <div class="invite">
+    <p>This guide is a starting source, not a final word. It comes out of whiteboard sessions where the working rule is shared ideas rather than instruction — every discussion has sharpened it, and the next one will too.</p>
+    <p style="margin-top:1rem">If anything here raises a question, or you see it differently, reach out: <a href="mailto:jmcelwee@avemarialaw.edu">jmcelwee@avemarialaw.edu</a>. I don't know what I don't know, and new questions are how this gets better. It's the people we meet.</p>
+  </div>
+
+  <a href="/writing/" class="back-link">Writing</a>
+  <footer>
+    <p class="disclaimer">Joshua McElwee is a J.D. candidate and is not admitted to practice law in Florida. This website is a professional portfolio and does not offer legal services or legal advice. This guide is general educational material, not legal advice for any specific situation. Please do not send confidential or case-specific information.</p>
+    <p class="signoff">Joshua McElwee · Fort Myers, Florida · <a href="https://www.linkedin.com/in/joshuamcelwee/" rel="me">LinkedIn</a> · MMXXVI</p>
+  </footer>
+</main>
+</body>
+</html>

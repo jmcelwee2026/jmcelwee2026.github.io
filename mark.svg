@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="McElwee lens-ring mark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="McElwee mark">
+  <!-- Display build of the brand mark: gravitational lens rings.
+       Photon ring around a true-black void (darker than the site ink, so
+       the hole reads as absence), hairline substructure ring, echo rings
+       widening and fading outward. Transparent ground — set against the
+       site ink. Small-size cut in favicon.svg; foil cut for print is
+       three solid rings. On light grounds use the open-center variant. -->
   <circle cx="100" cy="100" r="37" fill="#000000"/>
   <circle cx="100" cy="100" r="40" fill="none" stroke="#C9A20E" stroke-width="7"/>
   <g fill="none" stroke="#C9A20E">

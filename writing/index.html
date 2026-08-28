@@ -3,29 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Joshua McElwee — Juris Doctor Candidate, Ave Maria School of Law</title>
-<meta name="description" content="Joshua McElwee. J.D. Candidate 2027, Ave Maria School of Law. Regulatory research, government data, and applied legal technology.">
-<link rel="canonical" href="https://joshuamcelwee.com/">
-<meta property="og:title" content="Joshua McElwee — Juris Doctor Candidate, Ave Maria School of Law">
-<meta property="og:description" content="Joshua McElwee. J.D. Candidate 2027, Ave Maria School of Law. Regulatory research, government data, and applied legal technology.">
-<meta property="og:type" content="profile">
+<title>Writing — Joshua McElwee</title>
+<meta name="description" content="Fall 2026 scholarly project in preparation. Verification by Design: Responsible AI-Assisted Public-Law Research.">
+<link rel="canonical" href="https://joshuamcelwee.com/writing/">
+<meta property="og:title" content="Writing — Joshua McElwee">
+<meta property="og:description" content="Fall 2026 scholarly project in preparation. Verification by Design: Responsible AI-Assisted Public-Law Research.">
+<meta property="og:type" content="article">
 <meta property="og:image" content="https://joshuamcelwee.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Joshua McElwee",
-  "jobTitle": "Juris Doctor Candidate",
-  "affiliation": {"@type": "CollegeOrUniversity", "name": "Ave Maria School of Law"},
-  "address": {"@type": "PostalAddress", "addressLocality": "Fort Myers", "addressRegion": "FL", "addressCountry": "US"},
-  "email": "mailto:jmcelwee@avemarialaw.edu",
-  "url": "https://joshuamcelwee.com/",
-  "sameAs": ["https://www.linkedin.com/in/joshuamcelwee/"]
-}
-</script>
+
 <style>
 :root{
   --ink:#14161A; --ink-soft:#3E444D; --ink-faint:#737983;
@@ -167,39 +155,6 @@ footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted 
   h2{margin-top:2rem}
   footer{padding-top:2.4rem}
 }
-
-/* Home only: a slow light pass down the gold seam */
-.seam{
-  background:linear-gradient(180deg,
-    var(--gold) 0%, var(--gold) 38%,
-    #E8D073 45%,
-    #F6ECC2 50%,
-    #E8D073 55%,
-    var(--gold) 62%, var(--gold) 100%);
-  background-size:100% 340%;
-  animation:seamShimmer 14s ease-in-out infinite;
-}
-@keyframes seamShimmer{
-  0%, 22%   {background-position:50% 0%}
-  78%, 100% {background-position:50% 100%}
-}
-@media (max-width:760px){
-  .seam{
-    background:linear-gradient(90deg,
-      var(--gold) 0%, var(--gold) 38%,
-      #E8D073 45%, #F6ECC2 50%, #E8D073 55%,
-      var(--gold) 62%, var(--gold) 100%);
-    background-size:340% 100%;
-    animation:seamShimmerX 14s ease-in-out infinite;
-  }
-  @keyframes seamShimmerX{
-    0%, 22%   {background-position:0% 50%}
-    78%, 100% {background-position:100% 50%}
-  }
-}
-@media (prefers-reduced-motion: reduce){
-  .seam{animation:none; background:var(--gold)}
-}
 </style>
 </head>
 <body>
@@ -215,20 +170,29 @@ footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted 
     </g>
   </svg>
   <nav aria-label="Primary">
-    <a href="/" class="current">Home</a>
-    <a href="/writing/">Writing</a>
+    <a href="/">Home</a>
+    <a href="/writing/" class="current">Writing</a>
     <a href="/about/">About</a>
   </nav>
 </div>
 <div class="seam" aria-hidden="true"></div>
-<main class="">
-  <h1>Joshua McElwee</h1>
-  <p class="cred">Juris Doctor Candidate 2027 · Ave Maria School of Law<br>Florida Bar Exam, July 2027</p>
+<main class="long">
+  <h1 class="small">Writing</h1>
+  <p class="cred">Discussion series · Papers</p>
   <hr class="rule">
-  <p class="contact">
-    <a href="mailto:jmcelwee@avemarialaw.edu">jmcelwee@avemarialaw.edu</a>
-  </p>
+
+  <div class="prose">
+
+    <h2>Ongoing — Ask It. Build It. Embed It.</h2>
+    <p>An ongoing series of whiteboard working sessions on AI system architecture — hosted assistant interfaces, agentic coding environments, and programmatic access through APIs — among a trusted circle of law students and practicing attorneys. The sessions run on shared ideas rather than instruction: each discussion tests and sharpens every participant's working methods, toward a stable common vocabulary in an area where the discourse is otherwise vendor marketing or vague caution.</p>
+    <p>A fixed whiteboard framework and a supporting 22-page technical reference keep the conversations grounded — the three access modes, the distinction between intelligence and automation, and verification duties that scale with consequence — so what the group works out in one session holds steady into the next.</p>
+    <p style="margin-top:1rem"><a href="/writing/ask-build-embed/" style="font-family:var(--sans); font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep); text-decoration:none; border-bottom:1px solid var(--gold-edge); padding-bottom:.15rem;">Read the guide — Ask It. Build It. Embed It. →</a></p>
+  </div>
+
+  <a href="/" class="back-link">Home</a>
+
   <footer>
+    <p class="disclaimer">Joshua McElwee is a J.D. candidate and is not admitted to practice law in Florida. This website is a professional portfolio and does not offer legal services or legal advice. Project descriptions are limited to information appropriate for public disclosure; nonpublic employer and client materials are not reproduced. Please do not send confidential or case-specific information.</p>
     <p class="signoff">Joshua McElwee · Fort Myers, Florida · <a href="https://www.linkedin.com/in/joshuamcelwee/" rel="me">LinkedIn</a> · MMXXVI</p>
   </footer>
 </main>

@@ -1,5 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="McElwee lens-ring mark">
-  <!-- Small cut for favicons and any use below one-half inch. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="McElwee mark">
+  <!-- Favicon build of the brand mark: simplified three-ring cut of the
+       lens-ring mark for small-size tab legibility; ink field added for
+       light and dark tabs; stroke set to the approved brand gold used on
+       the site. Full display geometry lives in mark.svg. -->
   <rect width="200" height="200" fill="#14161A"/>
   <g fill="none" stroke="#C9A20E">
     <circle cx="100" cy="100" r="46" stroke-width="10"/>
