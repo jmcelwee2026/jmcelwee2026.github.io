@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When Technology Becomes Obligation — Joshua McElwee</title>
+<meta name="description" content="How AI in early diagnosis and preventive medicine expands the legal duties of providers and patients. Seminar paper, Healthcare Law, Fall 2025.">
+<link rel="canonical" href="https://joshuamcelwee.com/writing/technology-becomes-obligation/">
+<meta property="og:title" content="When Technology Becomes Obligation — Joshua McElwee">
+<meta property="og:description" content="When Technology Becomes Obligation: AI and Duty — how artificial intelligence expands the standard of care for providers and the responsibilities of patients.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://joshuamcelwee.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+:root{
+  --ink:#14161A; --ink-soft:#3E444D; --ink-faint:#737983;
+  --gold:#C9A20E; --gold-deep:#8E7108; --gold-edge:#E2D6A9;
+  --paper:#F6F3EB; --paper-warm:#EFEAD9;
+  --serif:"Iowan Old Style","Charter","Palatino Linotype","Palatino","Hoefler Text",Georgia,serif;
+  --sans:"Avenir Next","Optima","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:var(--serif); color:var(--ink); background:var(--paper);
+  display:flex; min-height:100vh;
+}
+.rail{
+  width:260px; min-height:100vh; background:var(--ink); flex:none;
+  display:flex; flex-direction:column; align-items:center;
+  padding:4.5rem 0 2rem;
+}
+.rail .mark{width:96px; height:96px}
+.rail nav{
+  margin-top:3rem; font-family:var(--sans); font-size:.78rem;
+  letter-spacing:.16em; text-transform:uppercase; text-align:center;
+  line-height:2.4;
+}
+.rail nav a{display:block; color:var(--ink-faint); text-decoration:none; padding:0 .8rem;}
+.rail nav a:hover{color:var(--gold-edge)}
+.rail nav a.current{color:var(--gold)}
+.seam{width:1.5px; background:var(--gold); flex:none}
+main{
+  flex:1; display:flex; flex-direction:column;
+  padding:6vh 8vw 4vh; max-width:940px;
+}
+h1{font-size:clamp(1.9rem,3.8vw,2.7rem); font-weight:700; letter-spacing:.005em; line-height:1.15}
+h1 em{font-style:italic; color:var(--gold-deep)}
+.tagline{
+  font-family:var(--serif); font-style:italic; font-size:1.08rem;
+  color:var(--ink-soft); margin-top:.8rem; line-height:1.6; max-width:36rem;
+}
+.cred{
+  font-family:var(--sans); font-size:.72rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-soft); margin-top:1rem; line-height:1.9;
+}
+.rule{border:none; border-top:3px double var(--gold); margin:2.2rem 0; width:6.5rem}
+.rule.thin{border-top-width:1px; opacity:.5}
+
+.epigraph{
+  font-family:var(--serif); font-style:italic; font-size:1.1rem;
+  color:var(--ink-soft); line-height:1.7; max-width:40rem;
+  margin:3.2rem 0 .4rem; padding-left:1.2rem;
+  border-left:3px solid var(--gold-edge);
+}
+.epigraph sup a{font-style:normal}
+h2.section{
+  font-family:var(--serif); font-size:1.45rem; font-weight:600;
+  color:var(--ink); margin:.9rem 0 1.1rem; line-height:1.3; max-width:40rem;
+}
+h2.section .num{
+  font-family:var(--sans); font-size:.78rem; font-weight:700;
+  letter-spacing:.18em; color:var(--gold-deep); display:block; margin-bottom:.35rem;
+}
+h2.notes-head{
+  font-family:var(--sans); font-size:.82rem; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft);
+  margin:3.4rem 0 1rem; padding-top:1.4rem; border-top:1px solid var(--gold-edge);
+}
+.prose{font-size:1.03rem; line-height:1.8; color:var(--ink-soft); max-width:40rem}
+.prose p + p{margin-top:1.05rem}
+.prose em{color:inherit}
+sup.en{line-height:0; font-size:.7em}
+sup.en a{
+  color:var(--gold-deep); text-decoration:none; font-family:var(--sans);
+  padding:0 .1em;
+}
+sup.en a:hover{color:var(--ink)}
+.notes{
+  font-size:.88rem; line-height:1.7; color:var(--ink-soft);
+  max-width:42rem; margin-left:1.6rem;
+}
+.notes li{margin-top:.65rem; padding-left:.3rem}
+.notes li:target{background:rgba(201,162,14,.08)}
+.notes a{color:var(--gold-deep); text-decoration:none; border-bottom:1px solid var(--gold-edge); overflow-wrap:break-word;}
+.notes a:hover{color:var(--ink); border-bottom-color:var(--gold)}
+.notes .ret{border-bottom:none; margin-left:.35em; font-family:var(--sans); font-size:.85em}
+.authors-note{
+  margin-top:1.6rem; padding:1rem 1.2rem; max-width:42rem;
+  border-left:3px solid var(--gold); background:rgba(201,162,14,.05);
+  font-family:var(--sans); font-size:.84rem; line-height:1.65; color:var(--ink-soft);
+}
+.authors-note b{color:var(--ink)}
+
+.back-link{
+  display:inline-block; font-family:var(--sans); font-size:.78rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep);
+  text-decoration:none; margin-top:3rem;
+}
+.back-link:hover{color:var(--ink)}
+.back-link::before{content:"← "; color:var(--gold)}
+
+footer{margin-top:auto; padding-top:3rem; max-width:40rem;}
+footer .disclaimer{
+  font-family:var(--sans); font-size:.72rem; line-height:1.6;
+  color:var(--ink-faint); font-style:italic;
+  border-top:1px solid var(--gold-edge); padding-top:1rem;
+}
+footer .signoff{font-family:var(--sans); font-size:.72rem; letter-spacing:.06em; color:var(--ink-faint); margin-top:1rem;}
+footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted var(--gold-edge)}
+
+@media (max-width:760px){
+  body{flex-direction:column}
+  .rail{
+    width:100%; min-height:0; padding:2rem 1.4rem 1.4rem;
+    flex-direction:row; justify-content:space-between; align-items:center;
+  }
+  .rail .mark{width:56px; height:56px}
+  .rail nav{
+    margin-top:0; font-size:.66rem; line-height:1.4; text-align:right;
+    display:flex; flex-wrap:wrap; gap:.4rem .9rem; justify-content:flex-end;
+  }
+  .rail nav a{display:inline; padding:0}
+  .seam{width:100%; height:1.5px}
+  main{padding:2.4rem 1.6rem 2rem}
+  footer{padding-top:2.4rem}
+}
+</style>
+</head>
+<body>
+<div class="rail">
+  <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="McElwee mark">
+    <style>
+      .mark-halo circle{animation:markBreathe 6.4s ease-in-out infinite; animation-delay:var(--d)}
+      .mark-glint{transform-box:view-box; transform-origin:100px 100px; animation:markSweep 8s linear infinite}
+      @keyframes markBreathe{0%,100%{opacity:var(--o)} 50%{opacity:var(--op)}}
+      @keyframes markSweep{
+        0%{transform:rotate(0deg); opacity:0}
+        12%{opacity:1}
+        55%{opacity:1}
+        72%{opacity:0}
+        100%{transform:rotate(360deg); opacity:0}
+      }
+      @media (prefers-reduced-motion: reduce){
+        .mark-halo circle{animation:none}
+        .mark-glint{animation:none; opacity:0}
+      }
+    </style>
+    <defs>
+      <linearGradient id="markGlintGrad" gradientUnits="userSpaceOnUse" x1="140" y1="100" x2="105" y2="140">
+        <stop offset="0" stop-color="#F3D65C" stop-opacity="0"/>
+        <stop offset="0.5" stop-color="#F7E27E"/>
+        <stop offset="1" stop-color="#F3D65C" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="markGlow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="3.5"/>
+      </filter>
+    </defs>
+    <circle cx="100" cy="100" r="37" fill="#000000"/>
+    <circle cx="100" cy="100" r="40" fill="none" stroke="#C9A20E" stroke-width="7" opacity="0.4" filter="url(#markGlow)"/>
+    <circle cx="100" cy="100" r="40" fill="none" stroke="#C9A20E" stroke-width="7"/>
+    <g class="mark-halo" fill="none" stroke="#C9A20E">
+      <circle cx="100" cy="100" r="46.5" stroke-width="1.2" opacity="0.5" style="--o:.5;--op:.85;--d:0s"/>
+      <circle cx="100" cy="100" r="52" stroke-width="2.6" opacity="0.5" style="--o:.5;--op:.8;--d:1.1s"/>
+      <circle cx="100" cy="100" r="67" stroke-width="1.9" opacity="0.28" style="--o:.28;--op:.55;--d:2.2s"/>
+      <circle cx="100" cy="100" r="85" stroke-width="1.4" opacity="0.14" style="--o:.14;--op:.34;--d:3.3s"/>
+    </g>
+    <g class="mark-glint">
+      <circle cx="100" cy="100" r="40" fill="none" stroke="url(#markGlintGrad)" stroke-width="9" stroke-linecap="round" stroke-dasharray="58 193.4" filter="url(#markGlow)" opacity="0.85"/>
+      <circle cx="100" cy="100" r="40" fill="none" stroke="url(#markGlintGrad)" stroke-width="7" stroke-linecap="round" stroke-dasharray="58 193.4"/>
+    </g>
+  </svg>
+  <nav aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/writing/" class="current">Writing</a>
+    <a href="/about/">About</a>
+  </nav>
+</div>
+<div class="seam" aria-hidden="true"></div>
+<main>
+  <h1>When Technology Becomes Obligation: <em>AI and Duty</em></h1>
+  <p class="tagline">As the means of foreseeing and preventing harm grow, so does the duty to use them &mdash; for physicians and patients alike.</p>
+  <p class="cred">Seminar Paper &middot; Healthcare Law &middot; Fall 2025</p>
+  <hr class="rule">
+
+  <article>
+
+    <h2 class="section"><span class="num">I</span>Introduction</h2>
+    <div class="prose">
+      <p>Saint Thomas Aquinas taught that ignorance of what one is bound to know, when it springs from negligence, is itself blameworthy.<sup class="en"><a href="#en1" id="enref1">1</a></sup> The question belongs to another century, yet it carries a modern resonance. We live in a moment when knowledge arrives before illness announces itself, when patterns inside the body are revealed long before a human eye could notice them. Artificial intelligence has entered healthcare not as a distant promise but as a daily presence. It is being applied in radiology and pathology, tested in cardiology and dermatology, and extended into ordinary life through predictive analytics and continuous wearables.<sup class="en"><a href="#en2" id="enref2">2</a></sup> These tools offer earlier detection and a kind of ever-present watchfulness that previous generations of medicine could not imagine.</p>
+      <p>Their rise invites a renewed form of Aquinas’s question. When reason is amplified by technology, and when that technology uncovers danger in its earliest traces, at what point does the ability to know become the responsibility to act? When does a tool that sharpens our sight turn into a duty that law can recognize?</p>
+      <p>This paper argues that artificial intelligence in early diagnosis and preventive medicine will expand the legal duties of healthcare providers and reshape the expectations placed upon patients. Courts have at times treated the availability of an effective precaution as bearing on what reasonable care requires, even against settled professional custom.<sup class="en"><a href="#en3" id="enref3">3</a></sup> When prevention becomes simpler, the law quietly raises its expectations.</p>
+    </div>
+
+    <h2 class="section"><span class="num">II</span>The Historical Pattern: Technology Expands Duty</h2>
+    <div class="prose">
+      <p>The idea that advancing technology expands legal duty is far older than artificial intelligence. The common law recognized negligent medical treatment as an actionable wrong long before modern tort doctrine took shape; Blackstone described injury caused by a physician’s “neglect or unskilful management” as mala praxis, a breach of the trust the patient had placed in the practitioner.<sup class="en"><a href="#en4" id="enref4">4</a></sup> Duty has never been a static command. It has always been responsive to the practical abilities of ordinary life. When the means of avoiding harm become clearer or easier, the law grows correspondingly less tolerant of conduct that once fell within the boundaries of acceptable risk.</p>
+      <p>An early antecedent appears in the 1466 Case of Thorns. Cutting his own hedge, the defendant let thorns fall onto a neighbour’s land and entered to retrieve them, damaging the crops. He argued the fall was against his will. The court was unmoved: lawfulness of the underlying act, and even the involuntariness of the fall, did not by itself answer for the resulting trespass. The case predates negligence as we know it — the question was whether trespass lay at all for an unavoidable entry — but it marks an early refusal to let a lawful purpose excuse the harm it produced.<sup class="en"><a href="#en5" id="enref5">5</a></sup></p>
+      <p>Judge Buller later expressed the rule in more precise form in his eighteenth-century writings, calling it a maxim of the law that “every man ought to take reasonable care that he does not injure his neighbour.”<sup class="en"><a href="#en6" id="enref6">6</a></sup> The maxim stated a general duty of care rather than any rule about particular tools. Buller’s framing became part of the architecture of modern negligence doctrine: a duty of reasonable care toward one’s neighbor.</p>
+      <p>The same pattern appeared in early medical cases.</p>
+      <p>In <em>Stratton v. Swanlond</em>, a patient alleged that the surgeon John Swanlond had undertaken to heal a maimed hand and left it permanently impaired. The action was abated rather than decided on the merits, because the writ failed to allege where the undertaking occurred. The case is nonetheless among the earliest attempts to frame negligent medical treatment as an actionable wrong.<sup class="en"><a href="#en7" id="enref7">7</a></sup></p>
+      <p>By the nineteenth century, courts were defining a practitioner’s undertaking as a promise to bring the ordinary learning and skill of the profession, and treating the absence of that skill, no less than carelessness in applying it, as a ground of liability. That ordinary skill was measured against the learning and methods of the era. Those courts did not say that expectations rise as instruments improve; that inference is mine, and it is the argument this paper takes up.<sup class="en"><a href="#en8" id="enref8">8</a></sup> This historical pattern articulates that reasonable care is not a rigid formula. It is an evolving measure that grows with human capability. The more we can foresee, the greater the responsibility to prevent. The more precise our tools, the sharper the line between acceptable risk and preventable harm. It is a change in the field of vision. It transforms what people can know, and therefore what they ought to avoid.</p>
+      <p>These cases suggest a quieter principle, though it is a synthesis rather than a rule any court announced. Where a precaution is inexpensive, low-risk, and reliably effective against grave harm, a court may require it even though the calling has not adopted it. Note what the principle does not say: commonness is not what makes a precaution obligatory. Both cases cut the other way, holding that custom does not set the measure of due care.<sup class="en"><a href="#en9" id="enref9">9</a></sup></p>
+      <p>Artificial intelligence enters this lineage naturally. Its power to detect patterns, predict risk, and reveal emerging danger is simply the newest expansion in human capability. The law has adapted to such expansions before, and it is being asked to do so again in the age of digital diagnosis. AI is the next chapter in a very old story of how law responds to the growth of human understanding. As knowledge arrives through the quiet grace that accompanies discovery, the excuses for preventable harm begin to diminish.</p>
+    </div>
+
+    <h2 class="section"><span class="num">III</span>Neonatal Technology and Emerging Questions of Viability</h2>
+    <div class="prose">
+      <p>The evolution of neonatal medicine offers one of the clearest illustrations of how expanding capability reshapes the boundaries of duty. Survival at the earliest gestational ages was once vanishingly rare. In a nineteen-center United States cohort, survival to hospital discharge—or to one year for infants still hospitalized—reached 10.9 percent at twenty-two weeks, 49.4 percent at twenty-three weeks, and 69.9 percent at twenty-four weeks; among infants actively treated at birth, the corresponding figures were 30.0, 55.8, and 71.4 percent.<sup class="en"><a href="#en10" id="enref10">10</a></sup> This progress is reflected in the newest Guinness World Records recognition, which now lists Nash Keen, born in 2024 at exactly twenty-one weeks’ gestation, as the most premature infant ever to survive.<sup class="en"><a href="#en11" id="enref11">11</a></sup> His case is an extraordinary individual result rather than a population-level threshold, but it shows how far the boundary can move. A central barrier at these gestations remains lung immaturity. Infants born this early are still in the late canalicular or early saccular stage of lung development, when the gas-exchange structures and the surfactant system remain immature, and the oxygen and respiratory support they require can itself contribute to chronic lung disease. Much of modern neonatology has been devoted to finding ways around this biological limit.<sup class="en"><a href="#en12" id="enref12">12</a></sup></p>
+      <p>During the study period, antenatal corticosteroid use increased and less-invasive respiratory support became more common. Survival improved most markedly at twenty-three and twenty-four weeks, but the observational registry could not establish which changes in care caused that improvement; survival without major morbidity did not improve at twenty-two through twenty-four weeks. These trends have made active treatment at earlier gestations increasingly possible, but they do not establish a single population-level viability line.<sup class="en"><a href="#en13" id="enref13">13</a></sup></p>
+      <p>The most striking experimental development is the creation of external-womb systems. Research teams have supported fetal lambs in an artificial amniotic environment, often called a “Biobag,” for as long as twenty-eight days.<sup class="en"><a href="#en14" id="enref14">14</a></sup> These systems mimic the fluid-filled conditions of the uterus and allow continued development without relying on ventilators that can damage immature lungs. Parallel artificial-placenta efforts seek to transfer oxygen directly into the fetal bloodstream through a pumpless circuit. In one six-fetus ovine study, the circuit maintained systemic circulation for a mean of 250 hours and a maximum of 336 hours, though with reduced growth and unresolved complications.<sup class="en"><a href="#en15" id="enref15">15</a></sup></p>
+      <p>These systems seek to overcome the lung barrier by preserving fetal physiology rather than forcing immature lungs to breathe. The work remains preclinical: both studies used fetal lambs, and neither reports continued gestation of a human infant outside the uterus.<sup class="en"><a href="#en16" id="enref16">16</a></sup> Partridge and colleagues identified infants born at twenty-three to twenty-five weeks as the initial clinical population and expressly stated that their goal was not to extend viability below twenty-two to twenty-three weeks. Future refinements might affect that boundary, but the cited experiments do not establish that result.</p>
+      <p>As these capabilities grow, the meaning of viability itself begins to shift. When <em>Roe v. Wade</em> was decided, the Court placed viability at about twenty-eight weeks, though it noted survival might occur as early as twenty-four, reflecting the medical reality of 1973.<sup class="en"><a href="#en17" id="enref17">17</a></sup> <em>Casey</em> later observed that advances in neonatal care had moved viability somewhat earlier. <em>Dobbs</em> has since overruled both decisions, so they figure here only as historical instances of courts describing viability by reference to the medicine of their day.<sup class="en"><a href="#en18" id="enref18">18</a></sup> Public debates today over whether the decisive line rests at twenty-four weeks, twenty-two weeks, or somewhere earlier reflect not a change in metaphysics but a change in capability. Viability is not a fixed boundary. It is a measurement of human skill at a particular moment in history. An unborn child is therefore not medically unsavable in any permanent sense. The child is unsavable only relative to what current knowledge and tools permit. As neonatal medicine progresses, so does the horizon of what life can be sustained, and with it, the responsibilities tied to that possibility.</p>
+      <p>John Paul II wrote that those who care for the sick are called to be “guardians and servants of human life.”<sup class="en"><a href="#en19" id="enref19">19</a></sup> Neonatal technology illustrates this truth. Each expansion of capability brings a corresponding expansion of duty, a pattern mirrored precisely in artificial intelligence’s expansion of medical foresight. Does the same technological trajectory that reshapes viability reshape the expectations placed upon those who practice?</p>
+    </div>
+
+    <h2 class="section"><span class="num">IV</span>Provider Duties in the Age of AI</h2>
+    <div class="prose">
+      <p>If the history of negligence law teaches anything, it is that duty expands when the means of prevention expand. Nowhere is that more evident than in medicine, where the standard of care is inseparable from the tools that help clinicians diagnose, foresee, and respond to danger. Artificial intelligence intensifies this connection. It widens the range of what can be known, and in doing so, it widens the range of what a reasonable provider must do.</p>
+      <p>Modern malpractice law already frames this expectation. Statutes such as section 766.102 of the Florida Statutes define the medical standard of care as the “level of care, skill, and treatment” “recognized as acceptable and appropriate by reasonably prudent” similar providers.<sup class="en"><a href="#en20" id="enref20">20</a></sup> The phrase “reasonably prudent” has always carried an implicit dependence on the tools available. A cardiologist without access to an echocardiogram will be judged differently from one who ignores the results of a high-quality echocardiogram placed directly into her hands.<sup class="en"><a href="#en21" id="enref21">21</a></sup> Technology informs what prudence requires.</p>
+      <p>Artificial intelligence magnifies this relationship because it transforms the raw material of medical knowledge. In a proof-of-concept study, a deep neural network matched board-certified dermatologists on two skin-lesion classification tasks. A retrospective study used a neural network to identify a signal of paroxysmal atrial fibrillation in electrocardiograms recorded during normal sinus rhythm. AI tools can also structure clinical documentation, though a 2024 systematic review found error rates still too high for broad use of comprehensive documentation assistants. These are defined research capabilities, not general clinical superiority. But a sufficiently validated tool changes what a provider could have known and, therefore, what a court may later say the provider should have known. <sup class="en"><a href="#en22" id="enref22">22</a></sup>  Courts have already begun to respond to this shift in more traditional technology cases.</p>
+      <p>In <em>Sampson v. HeartWise Health Systems</em>, HeartWise generated reports from screening data, while interpretation, diagnosis, and referral decisions belonged to the treating physicians. The court affirmed summary judgment for HeartWise on the negligence claims, while reinstating and remanding the negligence claims against Isaac Health and its physicians because those claims had never been properly presented for summary judgment; it reached no view on their merits. It separately reversed summary judgment on the fraud theory against HeartWise because the survival statute did not bar that theory and the plaintiff presented substantial evidence of reasonable reliance. It did not decide falsity or causation because those issues had not been raised below, and it affirmed summary judgment for Isaac Health on fraud because reliance on its waiting-room materials was not shown. The court did not find any defendant liable for fraud. On the negligence side, the responsibilities for interpreting scans, diagnosing cardiovascular issues, and deciding whether to refer belonged to the physicians, not to HeartWise.<sup class="en"><a href="#en23" id="enref23">23</a></sup> The tool may assist, but the judgment remains human. <em>Byrne v. Avery Center for Obstetrics &amp; Gynecology</em> is not a technology-reliance case. It recognized a common-law confidentiality duty when a provider responded to a subpoena and held that HIPAA could inform the applicable standard. It supports only the broader analogy that a new regulatory setting does not necessarily displace independently existing provider duties; it does not establish a rule concerning software or artificial intelligence.<sup class="en"><a href="#en24" id="enref24">24</a></sup></p>
+      <p>As AI becomes more reliable, courts may begin to treat it the way they once treated new diagnostic tests. <em>Helling v. Carey</em> is the clearest example of this trajectory. Although tonometry testing for glaucoma was not customary in patients under forty years of age, the test was simple, inexpensive, and could detect glaucoma early enough for treatment to arrest its progression. The court held that custom could not excuse the failure to use a low-burden, high-benefit diagnostic tool. The reasoning was unapologetically functional: the profession’s habits could not override the demands of reasonable care.<sup class="en"><a href="#en25" id="enref25">25</a></sup></p>
+      <p>It is not difficult to imagine a parallel in AI-supported diagnostics. If a validated artificial-intelligence system consistently outperforms human interpretation in a specific setting, and if that system is accessible, affordable, and integrated into routine clinical practice, courts may view its omission much like the omission in <em>Helling</em>.<sup class="en"><a href="#en26" id="enref26">26</a></sup> Custom would remain relevant, but it would not necessarily be decisive. A tool that reliably illuminates danger may in time become a tool that reasonable care requires.</p>
+      <p><em>Helling’s</em> aftermath was contested. Washington enacted new medical-negligence standards after the decision, but its supreme court held that those statutes did not make professional custom dispositive; reasonable prudence remained the governing standard. Florida law contains a separate, comparable limit. Section 766.102(4) provides that failure to order, perform, or administer supplemental diagnostic tests is not actionable when a provider acts in good faith and with due regard for the prevailing professional standard of care. The provision therefore creates a narrow safe harbor without displacing the general professional-standard inquiry.<sup class="en"><a href="#en27" id="enref27">27</a></sup></p>
+      <p>This shift will not happen overnight. Courts will continue to insist on human oversight and individualized judgment. If particular AI tools become validated, accessible, and accepted in defined clinical settings, the standard of care may rise accordingly. Providers may then be expected to use those tools competently, verify their outputs, and integrate them into clinical reasoning. In time, failure to consult an appropriate system may be evaluated much like failure to order an indicated test or attend to a clear warning.</p>
+      <p>Artificial intelligence need not displace provider duty; in defined circumstances, it may expand what reasonable care requires. It can reveal more, earlier, and with fewer barriers. Because duty can follow usable knowledge, the law may increasingly expect clinicians to employ validated tools while retaining human judgment.</p>
+    </div>
+
+    <h2 class="section"><span class="num">V</span>The Rising Duty of the Patient</h2>
+    <div class="prose">
+      <p>The expansion of medical responsibility has never belonged to providers alone. Courts have long recognized that a patient’s conduct may affect recovery when, after receiving medical advice or follow-up instructions, the patient acts unreasonably and that conduct causally contributes to the injury. The doctrine does not impose a general obligation to adopt every available technology. Artificial intelligence may, however, change the information available to a patient and therefore the reasonableness of a response in a particular case.<sup class="en"><a href="#en28" id="enref28">28</a></sup></p>
+      <p>Comparative negligence allows courts to allocate fault between provider and patient when both contribute to an injury. <sup class="en"><a href="#en29" id="enref29">29</a></sup> In medical cases, comparative-fault principles may permit a factfinder to consider whether a patient unreasonably failed to follow medical advice, return for recommended care, or disclose relevant symptoms, where that conduct bears on causation. The law does not expect perfection. It expects sincerity and attention.<sup class="en"><a href="#en30" id="enref30">30</a></sup></p>
+      <p><em>Dunnington v. Virginia Mason</em> illustrates the distinction. Dunnington first received a choice between surgical excision and cryotherapy, not between biopsy and cryotherapy. At follow-up, after the lesion proved recalcitrant, the physician discussed excision and biopsy and favored excision; Dunnington again chose conservative care and did not return as instructed. After a December MRI, he deferred excisional biopsy, sought a second opinion, and again chose conservative treatment. A January punch biopsy revealed melanoma. He underwent excision, but the cancer recurred despite chemotherapy and radiation, and part of his leg ultimately was amputated. The court did not find him negligent; it held that disputed facts required the contributory-negligence defense to go to the factfinder.<sup class="en"><a href="#en31" id="enref31">31</a></sup></p>
+      <p><em>Witherell v. Weimer</em> presented a similar pattern. The patient refilled prescriptions without approval, ignored dosage instructions, failed to reduce medications when advised, undertook long automobile trips contrary to medical warnings, and delayed reporting leg pain for years. A jury attributed forty percent of her injury to her own conduct, and the Illinois Supreme Court found evidence supporting at least some of the asserted grounds and no reversible error in that allocation. The case stands for a straightforward proposition: a patient’s own unreasonable conduct can reduce recovery when it contributes to the harm.<sup class="en"><a href="#en32" id="enref32">32</a></sup></p>
+      <p>These precedents support a narrower rule: when a patient receives clear medical advice or follow-up instructions, unreasonable noncompliance that causally worsens the injury may reduce recovery. They do not establish a general duty to adopt any inexpensive tool within easy reach. Extending that logic to AI monitoring is this paper’s prediction, not a rule those cases announced.</p>
+      <p>AI-enabled wearables create a possible extension of this doctrine. A deep neural network has passively identified atrial fibrillation from commercial-smartwatch data, and physiological deviations detectable by wearables have sometimes preceded reported symptoms of infection. These studies demonstrate emerging detection capacity, not legally actionable notice. Neither establishes that patients currently receive clear, clinically validated warnings requiring action. A prescribed and validated device that delivers a specific, understandable warning could affect what a patient reasonably should do, but that is a conditional legal argument rather than a result established by these studies.<sup class="en"><a href="#en33" id="enref33">33</a></sup></p>
+      <p>The legal implications follow naturally from the historical pattern. If a patient receives a clear alert that signals risk, ignoring that alert may resemble ignoring a doctor’s direct instruction. If a patient refuses to use a simple monitoring device that a provider recommends, and if that decision contributes to a preventable harm, courts may treat the refusal as contributory negligence. The analogy to the seatbelt defense is instructive. A seatbelt does not prevent every injury, but it prevents many. It is inexpensive, accessible, and effortless to use. Courts reduce damages where the defendant proves that nonuse enhanced the injury, and they exclude nonuse from the question of who caused the collision.<sup class="en"><a href="#en34" id="enref34">34</a></sup> AI-enabled monitoring may in time stand in a similar place, though any such analogy would require proof of availability, a clear recommendation or warning, unreasonable nonuse, and causal enhancement of the injury. It cannot prevent every illness, but it can reveal some risks sooner and with little effort.</p>
+      <p>Artificial intelligence does not automatically create a new patient duty. If a validated, affordable tool is prescribed and gives a clear warning, unreasonable nonuse or inaction that causally worsens harm may become relevant to comparative fault. Whether the law will recognize that consequence depends on evidence of availability, clarity, reasonableness, and causation. Responsibility may grow with usable information, but the doctrine remains grounded in the circumstances of the individual case.</p>
+    </div>
+
+    <h2 class="section"><span class="num">VI</span>Policy, Participation, and the Regulatory Landscape</h2>
+    <div class="prose">
+      <p>Federal AI policy remains active and fragmented, while states continue to develop their own approaches.<sup class="en"><a href="#en35" id="enref35">35</a></sup> Florida hosts substantial AI research and medical-data infrastructure. OneFlorida+ provides a large, multi-institution clinical-research network.<sup class="en"><a href="#en36" id="enref36">36</a></sup> These resources may influence future professional practice, but they do not by themselves establish statewide clinical adoption, medical supervision, or regulation.</p>
+      <p>At the University of Florida, the 2020 initiative combined a $50 million gift—$25 million from alumnus Chris Malachowsky and $25 million in NVIDIA hardware, software, training, and services—with an additional $20 million UF investment. It was anchored by HiPerGator and included curriculum and UF Health research. UF researchers also developed DeepSOFA, a retrospectively developed and externally validated model using longitudinal electronic-health-record data to predict in-hospital mortality. These facts demonstrate research and educational capacity, not statewide clinical deployment.<sup class="en"><a href="#en37" id="enref37">37</a></sup></p>
+      <p>UF’s integration of AI into education and its research into patient-care applications may eventually influence professional expectations. The cited sources, however, do not establish that those tools have become prevailing practice across Florida. Whether a particular tool bears on reasonable care would require evidence about its validation, availability, acceptance within the relevant specialty, and use under comparable circumstances.</p>
+      <p>Florida’s telehealth statute requires a provider to practice consistently with the prevailing professional standard applicable to in-person care. The statute does not regulate AI or itself establish an AI standard of care. It does, however, support this paper’s inference that delivering care through technology does not lower the governing professional standard. Whether a particular AI tool becomes part of competent care would still depend on evidence of prevailing professional practice and the surrounding circumstances.<sup class="en"><a href="#en38" id="enref38">38</a></sup></p>
+      <p>Public and private support for research and clinical infrastructure may help normalize technology-assisted care. That development could influence—but does not itself determine—future standards of care.</p>
+      <p>Florida’s UF-centered research infrastructure gives the state the potential to influence future norms, but the cited sources do not establish that surgical robots or AI-guided care are already common statewide or that AI is legally obligatory. If particular AI tools become broadly adopted and accepted within a specialty, Florida courts may consider that practice when defining reasonable care. The state’s present research and educational infrastructure is therefore relevant background, not proof that technology has already become an obligation.</p>
+    </div>
+
+    <h2 class="section"><span class="num">VII</span>Conclusion</h2>
+    <div class="prose">
+      <p>Aquinas taught that reason carries responsibility, and the history of negligence law reflects the same idea. This paper has traced how courts have treated the availability of effective new tools as bearing on what reasonable care requires, from early common-law decisions to modern technology cases. Artificial intelligence may enter that same lineage. For providers, validated diagnostic and predictive tools may alter what can reasonably be known about a patient’s condition and may eventually affect what reasonable care requires. For patients, validated monitoring devices and clear warnings may strengthen established expectations to follow medical advice and participate in their own safety. Florida’s expanding AI research and educational infrastructure offers relevant background for how such norms might develop. AI does not overturn traditional principles; it may extend them by enlarging human capability. As the means to foresee and prevent harm grow, so may the duty to use them, but any legal obligation will remain dependent on validation, accessibility, professional practice, reasonableness, and causation.</p>
+      <p>Alan Turing, whose work helped define early debates about machine intelligence, closed his 1950 essay with the observation that “We can only see a short distance ahead, but we can see plenty there that needs to be done.” Pope Francis likewise cautions that immense technological development must be matched by growth in human responsibility, values, and conscience. The future of medical duty will be shaped in that shared space, where technology, foresight, and responsibility meet.<sup class="en"><a href="#en39" id="enref39">39</a></sup></p>
+    </div>
+
+    <h2 class="notes-head" id="notes">Notes</h2>
+    <ol class="notes">
+      <li id="en1">Thomas Aquinas, <em>Summa Theologica</em> pt. I–II, q. 76, art. 2 (Fathers of the English Dominican Province trans., Christian Classics 1981) (“through negligence, ignorance of what one is bound to know, is a sin”). <a class="ret" href="#enref1">&#8617;</a></li>
+      <li id="en2">Eric J. Topol, <em>High-Performance Medicine: The Convergence of Human and Artificial Intelligence</em>, 25 Nature Medicine 44, 44–56 (2019) (surveying applications in radiology, pathology, cardiology, and dermatology, together with predictive analytics and continuous wearable monitoring). <a class="ret" href="#enref2">&#8617;</a></li>
+      <li id="en3"><em>The T.J. Hooper</em>, 60 F.2d 737, 740 (2d Cir. 1932); <em>see also Helling v. Carey</em>, 83 Wash. 2d 514, 517–19, 519 P.2d 981, 982–84 (1974). <em>Meeks v. Marx</em> later characterized <em>Helling</em> as “restricted solely to its own ‘unique’ facts.” 15 Wash. App. 571, 577, 550 P.2d 1158, 1162 (1976). The Washington Supreme Court nevertheless preserved <em>Helling</em>’s broader reasonable-prudence principle, explaining that professional practice is evidence rather than the dispositive measure and that expert testimony is ordinarily required absent exceptional circumstances like <em>Helling</em>. <em>Harris v. Groth</em>, 99 Wash. 2d 438, 443–46, 451–52, 663 P.2d 113 (1983); <em>see</em> Wash. Rev. Code § 4.24.290. <a class="ret" href="#enref3">&#8617;</a></li>
+      <li id="en4">3 William Blackstone, <em>Commentaries on the Laws of England</em> *122 (Oxford 1768) (describing injury caused by “the neglect or unskilful management of [a] physician, surgeon, or apothecary” as <em>mala praxis</em>, a breach of the trust the patient reposed in the practitioner). <a class="ret" href="#enref4">&#8617;</a></li>
+      <li id="en5"><em>Hulle v. Orynge (The Case of Thorns)</em>, Y.B. Mich. 6 Edw. IV, fol. 7, pl. 18 (1466), <em>translated in</em> John H. Baker &amp; S.F.C. Milsom, <em>Sources of English Legal History: Private Law to 1750</em> 369–73 (2d ed. 2010) (debating whether trespass lay for an entry the defendant said was against his will). <a class="ret" href="#enref5">&#8617;</a></li>
+      <li id="en6">Francis Buller, <em>An Introduction to the Law Relative to Trials at Nisi Prius</em> 25 (5th ed., N.Y. reprint 1788) (“EVERY Man ought to take reasonable Care that he does not injure his Neighbour”). The London fifth edition, which prints the passage without the capitals, appeared in 1790. <a class="ret" href="#enref6">&#8617;</a></li>
+      <li id="en7"><em>Stratton v. Swanlond</em>, Y.B. Hil. 48 Edw. III, fol. 6, pl. 11 (1374), <em>translated in</em> Baker &amp; Milsom, <em>supra</em> note 5, at 402–04 (writ abated because the place of the undertaking was omitted). <a class="ret" href="#enref7">&#8617;</a></li>
+      <li id="en8"><em>Leighton v. Sargent</em>, 27 N.H. 460, 468–74 (1853) (a professional undertakes “that reasonable degree of learning, skill and experience which is ordinarily possessed by the professors of the same art or science”); <em>Leighton v. Sargent</em>, 31 N.H. 119, 132 (1855). <a class="ret" href="#enref8">&#8617;</a></li>
+      <li id="en9"><em>The T.J. Hooper</em>, 60 F.2d at 740; <em>Helling</em>, 83 Wash. 2d at 518–19. <a class="ret" href="#enref9">&#8617;</a></li>
+      <li id="en10">Edward F. Bell et al., <em>Mortality, In-Hospital Morbidity, Care Practices, and 2-Year Outcomes for Extremely Preterm Infants in the US, 2013–2018</em>, 327 JAMA 248, 253 tbl. 2 (2022). <a class="ret" href="#enref10">&#8617;</a></li>
+      <li id="en11"><em>Most Premature Baby</em>, Guinness World Records, <a href="https://www.guinnessworldrecords.com/world-records/67461-most-premature-baby" rel="noopener">guinnessworldrecords.com</a> (last visited Aug. 28, 2026). <a class="ret" href="#enref11">&#8617;</a></li>
+      <li id="en12">Emily Y. Zhang et al., <em>Oxygen and Mechanical Stretch in the Developing Lung: Risk Factors for Neonatal and Pediatric Lung Disease</em>, 10 Frontiers in Medicine 1214108 (2023). <a class="ret" href="#enref12">&#8617;</a></li>
+      <li id="en13">Barbara J. Stoll et al., <em>Trends in Care Practices, Morbidity, and Mortality of Extremely Preterm Neonates, 1993–2012</em>, 314 JAMA 1039, 1041–48 (2015); Bell et al., <em>supra</em> note 10, at 252–55. <a class="ret" href="#enref13">&#8617;</a></li>
+      <li id="en14">Emily A. Partridge et al., <em>An Extra-Uterine System to Physiologically Support the Extreme Premature Lamb</em>, 8 Nature Communications 15112, at 4–5, 11 (2017) (final UA/UV group: eight fetal lambs aged 105–120 gestational days, supported for twenty to twenty-eight days; the authors compared 106–113-day lung development to approximately twenty-three to twenty-four weeks in humans and identified infants born at twenty-three to twenty-five weeks as the initial clinical population). <a class="ret" href="#enref14">&#8617;</a></li>
+      <li id="en15">Haruo Usuda et al., <em>Artificial Placenta Support of Extremely Preterm Ovine Fetuses at the Border of Viability for up to 336 Hours with Maintenance of Systemic Circulation but Reduced Somatic and Organ Growth</em>, 14 Frontiers in Physiology 1219185, at 1–3, 9–14 (2023) (six fetal lambs; mean support of 250 hours, maximum 336 hours, with reduced growth and other unresolved complications). <a class="ret" href="#enref15">&#8617;</a></li>
+      <li id="en16">Partridge et al., <em>supra</em> note 14; Usuda et al., <em>supra</em> note 15. <a class="ret" href="#enref16">&#8617;</a></li>
+      <li id="en17"><em>Roe v. Wade</em>, 410 U.S. 113, 160 (1973), <em>overruled by Dobbs v. Jackson Women’s Health Org.</em>, 597 U.S. 215 (2022). <a class="ret" href="#enref17">&#8617;</a></li>
+      <li id="en18"><em>Planned Parenthood of Se. Pa. v. Casey</em>, 505 U.S. 833, 860 (1992), <em>overruled by Dobbs</em>, 597 U.S. 215. <a class="ret" href="#enref18">&#8617;</a></li>
+      <li id="en19">Pope John Paul II, Encyclical Letter <em>Evangelium Vitae</em> ¶ 89 (Mar. 25, 1995) (“Their profession calls for them to be guardians and servants of human life.”). <a class="ret" href="#enref19">&#8617;</a></li>
+      <li id="en20">Fla. Stat. § 766.102(1) (2025). <a class="ret" href="#enref20">&#8617;</a></li>
+      <li id="en21"><em>Hall v. Hilbun</em>, 466 So. 2d 856, 871–73 (Miss. 1985) (a physician’s duty accounts for the facilities, services, equipment, and options reasonably available). <a class="ret" href="#enref21">&#8617;</a></li>
+      <li id="en22">Andre Esteva et al., <em>Dermatologist-Level Classification of Skin Cancer with Deep Neural Networks</em>, 542 Nature 115, 115–18 (2017); Zachi I. Attia et al., <em>An Artificial Intelligence-Enabled ECG Algorithm for the Identification of Patients with Atrial Fibrillation During Sinus Rhythm</em>, 394 Lancet 861, 861–67 (2019); Scott W. Perkins et al., <em>Improving Clinical Documentation with Artificial Intelligence: A Systematic Review</em>, 21 Perspectives in Health Information Management 1d (2024). <a class="ret" href="#enref22">&#8617;</a></li>
+      <li id="en23"><em>Sampson v. HeartWise Health Sys. Corp.</em>, 386 So. 3d 411, 425–30, 433–36 (Ala. 2023). <a class="ret" href="#enref23">&#8617;</a></li>
+      <li id="en24"><em>Byrne v. Avery Ctr. for Obstetrics &amp; Gynecology, P.C.</em>, 327 Conn. 540, 543–45, 567–73 (2018). <a class="ret" href="#enref24">&#8617;</a></li>
+      <li id="en25"><em>Helling v. Carey</em>, 83 Wash. 2d 514, 516–19, 519 P.2d 981, 982–84 (1974). <a class="ret" href="#enref25">&#8617;</a></li>
+      <li id="en26"><em>Id.</em> at 519, 519 P.2d at 984 (“We therefore hold, as a matter of law, that the reasonable standard that should have been followed under the undisputed facts of this case was the timely giving of this simple, harmless pressure test to this plaintiff and that, in failing to do so, the defendants were negligent, which proximately resulted in the blindness sustained by the plaintiff for which the defendants are liable.”). <a class="ret" href="#enref26">&#8617;</a></li>
+      <li id="en27">Fla. Stat. § 766.102(4) (2025). <a class="ret" href="#enref27">&#8617;</a></li>
+      <li id="en28">Restatement (Second) of Torts § 463 (Am. L. Inst. 1965) (defining contributory negligence as conduct falling below the standard to which a plaintiff should conform for the plaintiff’s own protection and which is a legally contributing cause, cooperating with the defendant’s negligence, in bringing about the plaintiff’s harm). <a class="ret" href="#enref28">&#8617;</a></li>
+      <li id="en29">Restatement (Third) of Torts: Apportionment of Liability § 7 (Am. L. Inst. 2000); Fla. Stat. § 768.81(2), (6) (2025) (proportional reduction for contributory fault; the greater-than-fifty-percent bar does not apply to medical negligence actions under chapter 766). <a class="ret" href="#enref29">&#8617;</a></li>
+      <li id="en30"><em>See Dunnington v. Va. Mason Med. Ctr.</em>, 187 Wash. 2d 629, 637–40, 389 P.3d 498 (2017); <em>Witherell v. Weimer</em>, 118 Ill. 2d 321, 339–40, 515 N.E.2d 68 (1987). <a class="ret" href="#enref30">&#8617;</a></li>
+      <li id="en31"><em>Dunnington</em>, 187 Wash. 2d at 632–34, 637–40. <a class="ret" href="#enref31">&#8617;</a></li>
+      <li id="en32"><em>Witherell</em>, 118 Ill. 2d at 339–40. <a class="ret" href="#enref32">&#8617;</a></li>
+      <li id="en33">Geoffrey H. Tison et al., <em>Passive Detection of Atrial Fibrillation Using a Commercially Available Smartwatch</em>, 3 JAMA Cardiology 409, 409–16 (2018); Tejaswini Mishra et al., <em>Pre-Symptomatic Detection of COVID-19 from Smartwatch Data</em>, 4 Nature Biomedical Engineering 1208, 1208–20 (2020). <a class="ret" href="#enref33">&#8617;</a></li>
+      <li id="en34"><em>Spier v. Barker</em>, 35 N.Y.2d 444, 449–50, 323 N.E.2d 164, 167 (1974) (nonuse bears on damages only, and only where the defendant proves it enhanced the injury). <a class="ret" href="#enref34">&#8617;</a></li>
+      <li id="en35">Exec. Order No. 13,859, 84 Fed. Reg. 3967 (Feb. 14, 2019); Exec. Order No. 14,148 § 2, 90 Fed. Reg. 8237 (Jan. 28, 2025) (revoking Exec. Order No. 14,110); Exec. Order No. 14,179, 90 Fed. Reg. 8741 (Jan. 31, 2025); Exec. Order No. 14,365, 90 Fed. Reg. 58,499 (Dec. 16, 2025); The White House, <em>Winning the Race: America’s AI Action Plan</em> (July 2025); U.S. Food &amp; Drug Admin., <em>Artificial Intelligence-Enabled Device Software Functions: Lifecycle Management and Marketing Submission Recommendations</em> (Draft Guidance Jan. 2025). <a class="ret" href="#enref35">&#8617;</a></li>
+      <li id="en36"><em>OneFlorida+ Clinical Research Network</em>, <a href="https://onefl.net" rel="noopener">onefl.net</a> (last visited Aug. 28, 2026). <a class="ret" href="#enref36">&#8617;</a></li>
+      <li id="en37"><em>UF Announces $70 Million Artificial Intelligence Partnership with NVIDIA</em>, Univ. of Fla. News (July 21, 2020), <a href="https://news.ufl.edu/2020/07/nvidia-partnership/" rel="noopener">news.ufl.edu</a>; Benjamin Shickel et al., <em>DeepSOFA: A Continuous Acuity Score for Critically Ill Patients Using Clinically Interpretable Deep Learning</em>, 9 Scientific Reports 1879 (2019). <a class="ret" href="#enref37">&#8617;</a></li>
+      <li id="en38">Fla. Stat. § 456.47(2)(a) (2025). <a class="ret" href="#enref38">&#8617;</a></li>
+      <li id="en39">A.M. Turing, <em>Computing Machinery and Intelligence</em>, 59 Mind 433, 460 (1950); Pope Francis, Encyclical Letter <em>Laudato Si’</em> ¶¶ 104–05 (May 24, 2015). <a class="ret" href="#enref39">&#8617;</a></li>
+    </ol>
+
+    <div class="authors-note"><b>AI-use disclosure.</b> This paper was drafted with assistance from generative artificial intelligence tools. The final text and cited authorities were reviewed against original or authoritative sources, and the author accepts responsibility for the analysis and conclusions. Cf. ABA Comm. on Ethics &amp;amp; Pro. Resp., Formal Op. 512, at 3–4 (2024).</div>
+
+  </article>
+
+  <a href="/writing/" class="back-link">Writing</a>
+
+  <footer>
+    <p class="disclaimer">Joshua McElwee is a J.D. candidate and is not admitted to practice law in Florida. This website is a professional portfolio and does not offer legal services or legal advice. This paper was written for an academic seminar and is presented as scholarship, not legal advice. Please do not send confidential or case-specific information.</p>
+    <p class="signoff">Joshua McElwee &middot; Fort Myers, Florida &middot; <a href="https://www.linkedin.com/in/joshuamcelwee/" rel="me">LinkedIn</a> &middot; MMXXVI</p>
+  </footer>
+</main>
+</body>
+</html>
