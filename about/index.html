@@ -179,18 +179,10 @@ figure.photo.missing::before{content:"Add photo: " attr(data-file); display:flex
   <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="McElwee mark">
     <style>
       .mark-halo circle{animation:markBreathe 6.4s ease-in-out infinite; animation-delay:var(--d)}
-      .mark-glint{transform-box:view-box; transform-origin:100px 100px; animation:markSweep 8s linear infinite}
       @keyframes markBreathe{0%,100%{opacity:var(--o)} 50%{opacity:var(--op)}}
-      @keyframes markSweep{
-        0%{transform:rotate(0deg); opacity:0}
-        12%{opacity:1}
-        55%{opacity:1}
-        72%{opacity:0}
-        100%{transform:rotate(360deg); opacity:0}
-      }
       @media (prefers-reduced-motion: reduce){
         .mark-halo circle{animation:none}
-        .mark-glint{animation:none; opacity:0}
+        .mark-glint{display:none}
       }
     </style>
     <defs>
@@ -212,7 +204,9 @@ figure.photo.missing::before{content:"Add photo: " attr(data-file); display:flex
       <circle cx="100" cy="100" r="67" stroke-width="1.9" opacity="0.28" style="--o:.28;--op:.55;--d:2.2s"/>
       <circle cx="100" cy="100" r="85" stroke-width="1.4" opacity="0.14" style="--o:.14;--op:.34;--d:3.3s"/>
     </g>
-    <g class="mark-glint">
+    <g class="mark-glint" opacity="0">
+      <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.12;0.55;0.72;1" dur="8s" repeatCount="indefinite"/>
       <circle cx="100" cy="100" r="40" fill="none" stroke="url(#markGlintGrad)" stroke-width="9" stroke-linecap="round" stroke-dasharray="58 193.4" filter="url(#markGlow)" opacity="0.85"/>
       <circle cx="100" cy="100" r="40" fill="none" stroke="url(#markGlintGrad)" stroke-width="7" stroke-linecap="round" stroke-dasharray="58 193.4"/>
     </g>
@@ -237,7 +231,7 @@ figure.photo.missing::before{content:"Add photo: " attr(data-file); display:flex
   <div class="prose">
     <p>I am a Juris Doctor candidate at Ave Maria School of Law focused on applied legal technology — using AI-directed research, government-data investigation, and workflow automation to produce accurate, reviewable legal work product across regulatory and public-sector settings.</p>
 
-    <p>Across every setting, applied technology has been the constant: AI-directed federal regulatory and funding research, multi-model AI workflows for commercial real-estate research, contract-management platform evaluation for public-sector legal operations, and desktop process automation within a state trial court. Each is developed as a case study in Selected Work.</p>
+    <p>Across every setting, applied technology has been the constant: AI-directed federal regulatory and funding research, multi-model AI workflows for commercial real-estate research, contract-management platform evaluation for public-sector legal operations, and desktop process automation within a state trial court.</p>
   </div>
 
   <h2>Skill Areas</h2>
