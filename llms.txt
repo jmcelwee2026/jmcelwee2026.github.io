@@ -1,0 +1,14 @@
+# Joshua McElwee
+
+> Professional portfolio of Joshua McElwee, J.D. candidate (Class of 2027), Ave Maria School of Law — regulatory research, government data, and applied legal technology. Not admitted to practice law in any jurisdiction; nothing on this site is legal advice.
+
+## Writing
+
+- [The King's Good Servant, and God's First](https://joshuamcelwee.com/writing/sanctity-of-the-record/): Research paper in five parts on AI and legal practice — deepfake evidence, hallucinated citations, the proposed Federal Rule of Evidence 707, and the lawyer's duty of verification.
+- [When Technology Becomes Obligation: AI and Duty](https://joshuamcelwee.com/writing/technology-becomes-obligation/): Research paper in seven parts on how AI in early diagnosis and preventive medicine may expand the legal duties of providers and patients.
+- [Ask It. Build It. Embed It.](https://joshuamcelwee.com/writing/ask-build-embed/): A technical reference and plain-language guide to hosted AI assistants, agentic coding environments, and APIs, with verification duties that scale with consequence.
+
+## About
+
+- [Writing index](https://joshuamcelwee.com/writing/): Research papers and the whiteboard discussion series.
+- [About](https://joshuamcelwee.com/about/): Professional identity, skill areas, and credentials.
