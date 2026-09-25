@@ -9,7 +9,13 @@
 - [When Technology Becomes Obligation: AI and Duty](https://joshuamcelwee.com/writing/technology-becomes-obligation/): Research paper in seven parts on how AI in early diagnosis and preventive medicine may expand the legal duties of providers and patients.
 - [Ask It. Build It. Embed It.](https://joshuamcelwee.com/writing/ask-build-embed/): A technical reference and plain-language guide to hosted AI assistants, agentic coding environments, and APIs, with verification duties that scale with consequence.
 
+## Research and projects
+
+- [Research](https://joshuamcelwee.com/research/): Published papers and public comments.
+- [Public Comment — FAA-2026-8614, Question C](https://joshuamcelwee.com/research/faa-2026-8614-question-c/): August 2026 public comment on statutory waivers for commercial space launch and reentry. Originally published under Mulapin Research Group; the original PDF and attribution are preserved.
+- [Projects](https://joshuamcelwee.com/projects/): Ongoing whiteboard working sessions, with links to the published discussion and technical guide.
+
 ## About
 
-- [Writing index](https://joshuamcelwee.com/writing/): Research papers and the whiteboard discussion series.
+- [Writing index](https://joshuamcelwee.com/writing/): Research papers, public comments, and the whiteboard discussion series.
 - [About](https://joshuamcelwee.com/about/): Professional identity, skill areas, and credentials.

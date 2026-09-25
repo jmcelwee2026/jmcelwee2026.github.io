@@ -214,7 +214,9 @@ figure.photo.missing::before{content:"Add photo: " attr(data-file); display:flex
   <nav aria-label="Primary">
     <a href="/">Home</a>
     <a href="/writing/">Writing</a>
-    <a href="/about/" class="current">About</a>
+    <a href="/research/">Research</a>
+    <a href="/projects/">Projects</a>
+    <a href="/about/" class="current" aria-current="page">About</a>
   </nav>
 </div>
 <div class="seam" aria-hidden="true"></div>
@@ -229,6 +231,8 @@ figure.photo.missing::before{content:"Add photo: " attr(data-file); display:flex
   <div class="tab-panel active" id="tab-professional">
 
   <div class="prose">
+    <p>I bring my writing, research, and ongoing projects together here under my own name. Research I previously published through Mulapin Research Group now lives on this site, with the original publications and their attribution preserved.</p>
+
     <p>I am a Juris Doctor candidate at Ave Maria School of Law focused on regulatory research, legal analysis, and clear written communication. I enjoy working through complicated information: finding the relevant sources, understanding how they fit together, and organizing the results so someone else can assess and use them.</p>
 
     <p>Technology is part of how I approach that work. I use research tools, public data, and AI-assisted workflows to explore questions and improve how information is gathered and reviewed. I care about being able to explain the result, trace it to its sources, and make the work understandable to the people who need it.</p>
@@ -265,7 +269,7 @@ figure.photo.missing::before{content:"Add photo: " attr(data-file); display:flex
     <p>Beneath the new instruments sit the enduring ones: LexisNexis Applied Legal Research certificates across secondary sources, statutory law, case law, and litigation — and one cheerful outlier, a Negotiation Professional certificate, because however far the horizon moves, the work still comes down to people in a room.</p>
   </div>
 
-  <h2>Contact</h2>
+  <h2 id="contact">Contact</h2>
   <div class="prose">
     <p>
       <a href="https://www.linkedin.com/in/joshuamcelwee/" style="color:var(--gold-deep); border-bottom:1px solid var(--gold-edge); text-decoration:none;">LinkedIn · /in/joshuamcelwee</a>
@@ -275,6 +279,7 @@ figure.photo.missing::before{content:"Add photo: " attr(data-file); display:flex
 
   </div>
   <div class="tab-panel" id="tab-personal">
+    <span id="personal"></span>
     <div class="prose" style="margin-top:2.2rem">
       <p>Raised in East Texas.</p>
       <p>Married for almost ten years. This year we welcomed our first child and started raising a family of our own.</p>
@@ -315,7 +320,12 @@ figure.photo.missing::before{content:"Add photo: " attr(data-file); display:flex
     document.getElementById('tab-'+name).classList.add('active');
     document.getElementById('tab-btn-'+name).classList.add('active');
   }
-  if(location.hash==='#personal'){showTab('personal')}
+  function showLinkedTab(){
+    if(location.hash==='#personal'){showTab('personal')}
+    if(location.hash==='#contact'){showTab('professional')}
+  }
+  showLinkedTab();
+  window.addEventListener('hashchange',showLinkedTab);
   </script>
 
   <a href="/" class="back-link">Home</a>
