@@ -139,6 +139,12 @@ footer .signoff{font-family:var(--sans); font-size:.72rem; letter-spacing:.06em;
 footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted var(--gold-edge)}
 
 
+.tabs{display:flex; gap:2.4rem; margin-top:2.2rem; border-bottom:1px solid var(--gold-edge); font-family:var(--sans); font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; max-width:38rem;}
+.tabs button{background:none; border:none; cursor:pointer; color:var(--ink-faint); padding:0 0 .7rem; font-family:inherit; font-size:inherit; letter-spacing:inherit; text-transform:inherit;}
+.tabs button:hover{color:var(--ink-soft)}
+.tabs button.active{color:var(--gold-deep); border-bottom:2px solid var(--gold); margin-bottom:-1px;}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
 
 @media (max-width:760px){
   body{flex-direction:column}
@@ -199,19 +205,22 @@ footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted 
   <nav aria-label="Primary">
     <a href="/">Home</a>
     <a href="/writing/" class="current" aria-current="page">Writing</a>
-    <a href="/research/">Research</a>
-    <a href="/projects/">Projects</a>
     <a href="/about/">About</a>
   </nav>
 </div>
 <div class="seam" aria-hidden="true"></div>
 <main class="long">
   <h1 class="small">Writing</h1>
-  <p class="cred">Papers · Public comments · Discussion series</p>
+  <p class="cred">Papers · Discussion series</p>
   <hr class="rule">
 
-  <section id="papers" aria-labelledby="papers-heading">
-    <h2 id="papers-heading">Research papers</h2>
+  <div class="tabs" role="tablist">
+    <button class="active" id="tab-btn-papers" onclick="showTab('papers')">Papers</button>
+    <button id="tab-btn-series" onclick="showTab('series')">Discussion Series</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-papers">
+    <span id="papers"></span><span id="papers-heading"></span>
     <div class="cards">
       <a class="card" href="/writing/sanctity-of-the-record/">
         <div class="card-eyebrow">Research Paper in Five Parts &middot; AI and the Practice of Law &middot; Fall 2025 &middot; Revised edition</div>
@@ -225,11 +234,18 @@ footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted 
         <div class="card-hook">How AI in early diagnosis and preventive medicine may expand the legal duties of providers and patients &mdash; from the Case of Thorns and <i>Helling v. Carey</i> to wearables, artificial wombs, and Florida&rsquo;s AI-saturated clinics.</div>
         <div class="card-tags">Health Law &middot; Torts &middot; Standard of Care</div>
       </a>
+      <span id="comments-heading"></span>
+      <a class="card" id="public-comments" href="/writing/faa-2026-8614-question-c/">
+        <div class="card-eyebrow">Public comment &middot; August 2026</div>
+        <div class="card-title">Commercial Space Launch and Reentry</div>
+        <div class="card-hook">A response to Question C in FAA Docket FAA-2026-8614, examining statutory waivers through completed licensing records. Originally published under Mulapin Research Group; original PDF preserved.</div>
+        <div class="card-tags">Space &middot; Public policy &middot; Source-based research</div>
+      </a>
     </div>
-  </section>
+  </div>
 
-  <section id="series" aria-labelledby="series-heading">
-    <h2 id="series-heading">Discussion series</h2>
+  <div class="tab-panel" id="tab-series">
+    <span id="series"></span><span id="series-heading"></span>
     <div class="cards">
       <a class="card" href="/writing/could-you-show-me/">
         <div class="card-eyebrow">Whiteboard Conversations &middot; September 2026</div>
@@ -248,23 +264,24 @@ footer .signoff a{color:inherit; text-decoration:none; border-bottom:1px dotted 
       <p>An ongoing series of whiteboard working sessions on AI system architecture — hosted assistant interfaces, agentic coding environments, and programmatic access through APIs — among a trusted circle of law students and practicing attorneys. The sessions run on shared ideas rather than instruction: each discussion tests and sharpens every participant's working methods, toward a stable common vocabulary in an area where the discourse is otherwise vendor marketing or vague caution.</p>
       <p>A fixed whiteboard framework and a supporting 22-page technical reference keep the conversations grounded — the three access modes, the distinction between intelligence and automation, and verification duties that scale with consequence — so what the group works out in one session holds steady into the next.</p>
     </div>
-  </section>
-
-  <section id="public-comments" aria-labelledby="comments-heading">
-    <h2 id="comments-heading">Public comments</h2>
-    <div class="cards">
-    <a class="card" href="/research/faa-2026-8614-question-c/">
-      <div class="card-eyebrow">Public comment · August 2026</div>
-      <div class="card-title">Commercial Space Launch and Reentry</div>
-      <div class="card-hook">A response to Question C in FAA Docket FAA-2026-8614, examining statutory waivers through completed licensing records.</div>
-      <div class="card-tags">Space · Public policy · Source-based research</div>
-    </a>
-    </div>
-    <p class="aside">Originally published under Mulapin Research Group in August 2026. Original PDF preserved.</p>
-  </section>
+  </div>
 
   <a href="/" class="back-link">Home</a>
 
+  <script>
+  function showTab(name){
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+    document.getElementById('tab-'+name).classList.add('active');
+    document.getElementById('tab-btn-'+name).classList.add('active');
+  }
+  function showLinkedTab(){
+    if(location.hash==='#series'||location.hash==='#series-heading'){showTab('series')}
+    if(['#papers','#papers-heading','#public-comments','#comments-heading'].includes(location.hash)){showTab('papers')}
+  }
+  showLinkedTab();
+  window.addEventListener('hashchange',showLinkedTab);
+  </script>
 
   <footer>
     <p class="disclaimer">Joshua McElwee is a J.D. candidate and is not admitted to practice law in any jurisdiction. This website is a professional portfolio. Nothing on it is legal advice or a substitute for the advice of a licensed attorney, and neither viewing this site nor contacting the author creates an attorney-client or any other professional relationship. Descriptions of past work are limited to information appropriate for public disclosure; nonpublic employer and client materials are not reproduced. All views expressed are the author’s own and not those of any employer, school, or other institution mentioned. Unsolicited communications are not confidential; please do not send confidential or case-specific information.</p>
